@@ -7,59 +7,60 @@ Conference (Scipy 2013).
 
 \section{Abstract}
 
-Geophysics is the science of using physical observations of the Earth to
-infer its inner structure. Generally, this is done with a variety of
-numerical modeling techniques and inverse problems. The development of
-new algorithms usually involves copy and pasting of code, which leads to
-errors and poor code reuse. Fatiando a Terra is a Python library that
-aims to automate common tasks and unify the modeling pipeline inside of
-the Python language. This allows users to replace the traditional shell
-scripting with more versatile and powerful Python scripting. The library
-can also be used as an API for developing stand-alone programs.
-Algorithms implemented in Fatiando a Terra can be combined to build upon
-existing functionality. This flexibility facilitates prototyping of new
-algorithms and quickly building interactive teaching exercises. In the
-future, we plan to continuously implement sample problems to help teach
-geophysics as well as classic and state-of-the-art algorithms.
+Geophysics is the science of using physical observations of the Earth to infer
+its inner structure. Generally, this is done with a variety of numerical
+modeling techniques and inverse problems. The development of new algorithms
+usually involves copy and pasting of code, which leads to errors and poor code
+reuse. Fatiando a Terra is a Python library that aims to automate common tasks
+and unify the modeling pipeline inside of the Python language. This allows
+users to replace the traditional shell scripting with more versatile and
+powerful Python scripting. The library can also be used as an API for
+developing stand-alone programs.  Algorithms implemented in Fatiando a Terra
+can be combined to build upon existing functionality. This flexibility
+facilitates prototyping of new algorithms and quickly building interactive
+teaching exercises. In the future, we plan to continuously implement sample
+problems to help teach geophysics as well as classic and state-of-the-art
+algorithms.
 
 
 
 
 \section{Introduction}
 
-Geophysics studies the physical processes of the Earth. Geophysicists
-make observations of physical phenomena and use them to infer the inner
-structure of the planet. This task requires the numerical modeling of
-physical processes. These numerical models can then be used in inverse
-problems to infer inner Earth structure from observations. Different
-geophysical methods use different kinds of observations. Geothermal
-methods use the temperature and heat flux of the Earth's crust.
-Potential field methods use gravitational and magnetic field
-measurements. Seismics and seismology use the ground motion caused by
+Geophysics studies the physical processes of the Earth. Geophysicists make
+observations of physical phenomena and use them to infer the inner structure of
+the planet. This task requires the numerical modeling of physical processes.
+These numerical models can then be used in inverse problems to infer inner
+Earth structure from observations. Different geophysical methods use different
+kinds of observations. Geothermal methods use the temperature and heat flux of
+the Earth's crust.  Potential field methods use gravitational and magnetic
+field measurements. Seismics and seismology use the ground motion caused by
 elastic waves from active (man-made) and passive (earthquakes) sources,
 respectively.
 
 The seismic method is among the most widely studied due to the high
 industry demand. Thus, a range of well established open-source software
 have been developed for seismic processing. These include
-\href{http://www.cwp.mines.edu/cwpcodes/}{Seismic Un*x} (SU) {[}SU{]}\_,
-\href{http://www.ahay.org/}{Madagascar} {[}MAD{]}\_,
+\href{http://www.cwp.mines.edu/cwpcodes/}{Seismic Un*x} (SU)
+\citep{stockwelljr.1999},
+\href{http://www.ahay.org/}{Madagascar} \citep{madagascardevelopmentteam2013},
 \href{http://opendtect.org}{OpendTect}, and
 \href{http://www.gebrproject.com}{GêBR}. A noteworthy open-source
 project that is not seismic related is the
-\href{http://gmt.soest.hawaii.edu/}{Generic Mapping Tools} (GMT) project
-{[}GMT{]}\_. The GMT are a well established collection of command-line
+\href{http://gmt.soest.hawaii.edu/}{Generic Mapping Tools}
+(GMT) project
+\citet{wessel1991}. The GMT are a well established collection of command-line
 programs for plotting maps with a variety of different map projections.
 For geodynamic modeling there is the
 \href{http://www.geodynamics.org}{Computational Infrastructure for
-Geodynamics} (CIG), which has grouped various well documented software
+Geodynamics}, which has grouped various well documented software
 packages. However, even with this wide range of well maintained software
 projects, many geophysical modeling software that are provided online
 still have no open-source license statement, have cryptic I/O files, are
 hard to integrate into a pipeline, and make code reuse and remixing
 challenging. Some of these problems are being worked on by the
 \href{http://geosys.usc.edu/projects/seatree/}{Solid Earth Teaching and
-Research Environment} (SEATREE) {[}SEATREE{]}\_ by providing a common
+Research Environment} (SEATREE) \citet{milner2009} by providing a common
 graphical interface for previously existing software. The numerical
 computations are performed by the pre-existing underlying C/Fortran
 programs. Conversely, the SEATREE code (written in Python) handles the
@@ -68,25 +69,26 @@ more approachable to students. However, the lack of a common API means
 that the code for these programs cannot be easily combined to create new
 modeling tools.
 
-\href{http://www.fatiando.org}{Fatiando a Terra} aims at providing such
-an API for geophysical modeling. Functions in the \texttt{fatiando}
-package use compatible data and mesh formats so that the output of one
-modeling function can be used as input for another. Furthermore,
-routines can be combined and reused to create new modeling algorithms.
-Fatiando a Terra also automates common tasks such as griding, map
-plotting with \href{http://matplotlib.org}{Matplotlib} {[}MPL{]}\_, and
-3D plotting with
-\href{http://code.enthought.com/projects/mayavi}{Mayavi} {[}MYV{]}\_.
-Version 0.1 of Fatiando a Terra is focused on gravity and magnetic
-methods because this is the main focus of the developers. However,
-simple ``toy'' problems for seismology and geothermics are available and
-can be useful for teaching geophysics.
+\href{http://www.fatiando.org}{Fatiando a Terra} aims at providing such an API
+for geophysical modeling. Functions in the \texttt{fatiando} package use
+compatible data and mesh formats so that the output of one modeling function
+can be used as input for another. Furthermore, routines can be combined and
+reused to create new modeling algorithms.  Fatiando a Terra also automates
+common tasks such as griding, map plotting with
+\href{http://matplotlib.org}{Matplotlib} \citep{hunter2007}, and 3D plotting
+with \href{http://code.enthought.com/projects/mayavi}{Mayavi}
+\citep{ramachandran2011}.  Version 0.1 of Fatiando a Terra is focused on
+gravity and magnetic methods because this is the main focus of the developers.
+However, simple ``toy'' problems for seismology and geothermics are available
+and can be useful for teaching geophysics.
 
 The following sections illustrate the functionality and design of
 Fatiando a Terra using various code samples. An
-\href{http://ipython.org/}{IPython} {[}IPY{]}\_ notebook file with these
-code samples is provided by {[}SAMPLES{]}\_ at
+\href{http://ipython.org/}{IPython} \citep{perez2007} notebook file with these
+code samples is provided by \citet{uieda2013} at
 \url{http://dx.doi.org/10.6084/m9.figshare.708390}.
+
+
 
 \section{Package structure}
 
@@ -229,12 +231,12 @@ model = [
 \end{verbatim}
 
 The \texttt{fatiando.vis.myv} module contains functions to automate 3D plotting
-using Mayavi {[}MYV{]}\_. The \texttt{mayavi.mlab} interface requires geometric
-elements to be formatted as TVTK objects. Thus, plotting functions in
-\texttt{fatiando.vis.myv} automatically create TVTK representations of
-\texttt{fatiando.mesher} objects and plot them using a suitable function of
-\texttt{mayavi.mlab}. Also included are utility functions for drawing axes,
-walls on the figure bounding box, etc. For example, the
+using Mayavi \citep{ramachandran2011}. The \texttt{mayavi.mlab} interface
+requires geometric elements to be formatted as TVTK objects. Thus, plotting
+functions in \texttt{fatiando.vis.myv} automatically create TVTK
+representations of \texttt{fatiando.mesher} objects and plot them using a
+suitable function of \texttt{mayavi.mlab}. Also included are utility functions
+for drawing axes, walls on the figure bounding box, etc. For example, the
 \texttt{fatiando.vis.myv.figure} function creates a figure and rotates it so
 that the z-axis points down, as is standard in geophysics. The following
 example shows how to plot the 3D right rectangular prism model that we created
@@ -415,9 +417,9 @@ mpl.show()
 \end{figure}
 
 The module \texttt{fatiando.gravmag.polyprism} implements the method of
-{[}PLOUFF{]}\_ to forward model the gravity fields of a 3D right
-polygonal prism. The following code sample shows how to interactively
-generate a polygonal prism model and calculate its gravity anomaly
+\citet{plouff1976} to forward model the gravity fields of a 3D right polygonal
+prism. The following code sample shows how to interactively generate a
+polygonal prism model and calculate its gravity anomaly
 (Figures~\ref{fig:drawing} and \ref{fig:polyprism}):
 
 \begin{verbatim}
@@ -487,12 +489,12 @@ has been focused on gravity and magnetic methods. Therefore, the
 \texttt{fatiando.gravmag} package contains more advanced and
 state-of-the-art algorithms than the other packages.
 
-The module \texttt{fatiando.gravmag.imaging} implements the imaging
-methods described in {[}FP{]}\_. These methods aim to produce an image
-of the geologic source from the observed gravity or magnetic data. The
-following code sample uses the ``sandwich model'' method {[}SNDW{]}\_ to
-image the polygonal prism, produced in the previous section, based on
-its gravity anomaly (Figure~\ref{fig:imaging}):
+The module \texttt{fatiando.gravmag.imaging} implements the imaging methods
+described in \citet{fedi2012}. These methods aim to produce an image of the
+geologic source from the observed gravity or magnetic data. The following code
+sample uses the ``sandwich model'' method \citep{pedersen1991} to image the
+polygonal prism, produced in the previous section, based on its gravity anomaly
+(Figure~\ref{fig:imaging}):
 
 \begin{verbatim}
 estimate = gravmag.imaging.sandwich(x, y, z, gz,
@@ -526,7 +528,7 @@ myv.show()
 
 Also implemented in Fatiando a Terra are some recent developments in
 gravity and magnetic inversion methods. The method of ``planting
-anomalous densities'' by {[}UB{]}\_ is implemented in the
+anomalous densities'' by \citet{uieda2012} is implemented in the
 \texttt{fatiando.gravmag.harvester} module. In contrast to imaging
 methods, this is an inversion method, i.e., it estimates a physical
 property distribution (density in the case of gravity data) that fits
@@ -680,12 +682,12 @@ Figure~\ref{fig:tomo} illustrates interesting inverse problem concepts.  Notice
 how the estimated velocity is blurred in the corners where no rays pass
 through. This is because the data (travel-times) provide no information about
 the velocity in those areas. Areas like those constitute the null space of the
-inverse problem {[}MENKE{]}\_, where any velocity value estimated will provide
-an equal fit to the data.  Thus, the tomography problem requires the use of
-prior information in the form of regularization. Most commonly used in
+inverse problem \citep{menke1984}, where any velocity value estimated will
+provide an equal fit to the data.  Thus, the tomography problem requires the
+use of prior information in the form of regularization. Most commonly used in
 tomography problems is the Tikhonov first-order regularization, e.g., a
-smoothness constraint {[}MENKE{]}\_. The amount of smoothness imposed on the
-solution is controlled by the \texttt{smooth} argument of function
+smoothness constraint \citep{menke1984}. The amount of smoothness imposed on
+the solution is controlled by the \texttt{smooth} argument of function
 \texttt{fatiando.seismic.srtomo.run}. That is how we are able to estimate a
 unique and stable solution and why the result is specially smoothed where there
 are no rays.
@@ -726,7 +728,7 @@ and high level of the Python language. After prototyping, the
 performance bottlenecks of these algorithms can be easily diagnosed
 using the advanced profiling tools available in the Python language.
 Optimization of only small components of code can be done without loss
-of flexibility using the Cython language {[}CYTHON{]}\_.
+of flexibility using the Cython language \citep{behnel2011}.
 
 The biggest challenge that Fatiando a Terra faces in the near future is
 the development of a user and, consequently, a developer community. This
