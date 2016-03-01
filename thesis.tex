@@ -1,0 +1,67 @@
+%\documentclass[msc]{on} %para dissertação de mestrado, descomentar esta linha e comentar a de baixo
+\documentclass[dsc]{on}
+%\documentclass[msc, numbers]{on} %a opção numbers da classe, mostrada nesta linha, é usada para citação por lista numérica em ordem de ocorrência
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+
+%pacotes utilizados
+\usepackage{enumerate} %para gerar listas numeradas
+\usepackage{graphicx}  %para figuras eps
+\usepackage{subfigure} %para figuras múltimas, com (a), (b), (c), etc.
+
+\makelosymbols
+\makeloabbreviations
+
+\begin{document}
+  \title{Título da Tese ou Dissertação}
+  \foreigntitle{Thesis Title}
+  \author{Nome do Autor}{Sobrenome}
+  \advisor{Prof.}{Nome do Orientador}{Sobrenome}{D.Sc.}
+% Comente a linha abaixo se não houver coorientador
+  \coadvisor{Prof.}{Nome do Primeiro Co-orientador}{Sobrenome}{D.Sc.}
+%  \coadvisor{Prof.}{Nome do Segundo Co-orientador}{Sobrenome}{Ph.D.}
+%  \coadvisor{Prof.}{Nome do Terceiro Co-orientador}{Sobrenome}{D.Sc.}
+
+
+  \examiner{Prof.}{Nome do Primeiro Examinador Sobrenome}{D.Sc.}
+  \examiner{Prof.}{Nome da Segunda Examinadora Sobrenome}{Ph.D.}
+  \examiner{Dr.}{Nome da Terceira Examinadora Sobrenome}{D.Sc.}
+  \examiner{Prof.}{Nome do Quarto Examinador Sobrenome}{Ph.D.}
+  \examiner{Prof.}{Nome do Quinto Examinador Sobrenome}{Ph.D.}
+  \department{COGE}
+  \date{05}{2014}
+
+  \keyword{Primeira palavra-chave}
+  \keyword{Segunda palavra-chave}
+  \keyword{Terceira palavra-chave}
+
+  \maketitle
+
+  \frontmatter
+  \include{dedic}
+  \include{thanks}
+  \include{resumo}
+  \include{abstract}
+  \tableofcontents
+  \listoffigures
+  \listoftables
+  \printlosymbols
+  \printloabbreviations
+
+  \mainmatter
+  \include{chap01}
+  \include{chap02}
+  \include{chap03}
+  \include{chap04}
+  \include{chap05}
+  \include{chap06}
+
+  \backmatter
+  \bibliographystyle{on-plain} %usar em conjnunto com o estilo de citações por ordem alfabética (defaut da classe ONTeX)
+%  \bibliographystyle{on-unsrt} %usar em conjnunto com o estilo de citações por lista em ordem de ocorrência no texto (utilizar a opção "numbers" na classe ONTeX)
+  \bibliography{thesis}
+
+  \appendix
+  \include{appenA}
+\end{document} 
