@@ -141,7 +141,7 @@ functionality of the \texttt{pyplot} interface is maintained while
 customizations facilitate common tasks. The following example
 illustrates the use of the custom \texttt{fatiando.vis.mpl.contourf}
 function to automatically grid and plot some irregularly sampled data
-(Figure~\ref{fig:contourf}):
+(Figure~\ref{fig:p1-contourf}):
 
 \begin{verbatim}
 from fatiando import gridder
@@ -171,7 +171,7 @@ mpl.show()
     Fatiando a Terra wrapper for the Matplotlib ``contourf``
     function.
     }
-    \label{fig:contourf}
+    \label{fig:p1-contourf}
 \end{figure}
 
 
@@ -187,7 +187,7 @@ function automates the creation of the \texttt{Basemap} objects with
 common parameters. This object can then be passed to the
 \texttt{contourf}, \texttt{contour} and \texttt{pcolor} functions in
 \texttt{fatiando.vis.mpl} and they will automatically plot using the
-given projection (Figure~\ref{fig:basemap}):
+given projection (Figure~\ref{fig:p1-basemap}):
 
 \begin{verbatim}
 mpl.figure()
@@ -207,7 +207,7 @@ mpl.show()
         Example of map plotting with the Robinson projection using the
         Matplotlib Basemap toolkit.
     }
-    \label{fig:basemap}
+    \label{fig:p1-basemap}
 \end{figure}
 
 
@@ -240,7 +240,7 @@ for drawing axes, walls on the figure bounding box, etc. For example, the
 \texttt{fatiando.vis.myv.figure} function creates a figure and rotates it so
 that the z-axis points down, as is standard in geophysics. The following
 example shows how to plot the 3D right rectangular prism model that we created
-previously (Figure~\ref{fig:twoprisms}):
+previously (Figure~\ref{fig:p1-twoprisms}):
 
 \begin{verbatim}
 from fatiando.vis import myv
@@ -259,7 +259,7 @@ myv.show()
     \caption{
         Example of plotting a list of right rectangular prisms in Mayavi.
     }
-    \label{fig:twoprisms}
+    \label{fig:p1-twoprisms}
 \end{figure}
 
 The \texttt{fatiando.mesher} module also contains classes for
@@ -269,7 +269,7 @@ rectangular prisms. This class behaves as a list of
 \texttt{fatiando.mesher.Prism} objects and can be passed to functions
 that ask for a list of prisms, like \texttt{fatiando.vis.myv.prisms}.
 Physical properties can be assigned to the mesh using the
-\texttt{addprop} method (Figure~\ref{fig:mesh}):
+\texttt{addprop} method (Figure~\ref{fig:p1-mesh}):
 
 \begin{verbatim}
 mesh = mesher.PrismMesh(bounds, shape=(3, 3, 3))
@@ -286,7 +286,7 @@ myv.show()
     \caption{
         Example of generating and visualizing a structured prism mesh.
     }
-    \label{fig:mesh}
+    \label{fig:p1-mesh}
 \end{figure}
 
 Often times the mesh is used to make a detailed model of an irregular
@@ -294,7 +294,7 @@ region of the Earth's surface. In such cases, it is necessary to
 consider the topography of the region. The \texttt{PrismMesh} class has
 a \texttt{carvetopo} method that masks the prisms that fall above the
 topography. The example below illustrates this functionality using
-synthetic topography (Figure~\ref{fig:meshtopo}):
+synthetic topography (Figure~\ref{fig:p1-meshtopo}):
 
 \begin{verbatim}
 from fatiando import utils
@@ -318,7 +318,7 @@ myv.show()
         Example of generating and visualizing a prism mesh with masked
         topography.
     }
-    \label{fig:meshtopo}
+    \label{fig:p1-meshtopo}
 \end{figure}
 
 When modeling involves the whole Earth, or a large area of it, the
@@ -327,7 +327,7 @@ cases, rectangular prisms are inadequate for modeling and tesseroids
 (e.g., spherical prisms) are better suited. The
 \texttt{fatiando.vis.myv} module contains auxiliary functions to plot
 along with tesseroids: an Earth-sized sphere, meridians and parallels,
-as well as continental borders (Figure~\ref{fig:tesseroid}):
+as well as continental borders (Figure~\ref{fig:p1-tesseroid}):
 
 \begin{verbatim}
 model = [
@@ -364,7 +364,7 @@ myv.show()
         Example of creating a tesseroid (spherical prism) model and visualizing
         it in Mayavi.
     }
-    \label{fig:tesseroid}
+    \label{fig:p1-tesseroid}
 \end{figure}
 
 
@@ -386,7 +386,7 @@ the program Tesseroids (\url{http://leouieda.github.io/tesseroids}) and
 calculates the gravitational fields of tesseroids (e.g., spherical
 prisms). The following example shows how to calculate the gravity
 anomaly of the tesseroid model generated in the previous section
-(Figure~\ref{fig:tesseroidgrav}):
+(Figure~\ref{fig:p1-tesseroidgrav}):
 
 \begin{verbatim}
 from fatiando import gravmag
@@ -411,16 +411,16 @@ mpl.show()
     \includegraphics[width=0.7\textwidth]{figures/paper1/gravmag_tesseroid_data}
     \caption{
         Example of forward modeling the gravity anomaly using the tesseroid
-        model shown in Figure~\ref{fig:tesseroid}.
+        model shown in Figure~\ref{fig:p1-tesseroid}.
     }
-    \label{fig:tesseroidgrav}
+    \label{fig:p1-tesseroidgrav}
 \end{figure}
 
 The module \texttt{fatiando.gravmag.polyprism} implements the method of
 \citet{plouff1976} to forward model the gravity fields of a 3D right polygonal
 prism. The following code sample shows how to interactively generate a
 polygonal prism model and calculate its gravity anomaly
-(Figures~\ref{fig:drawing} and \ref{fig:polyprism}):
+(Figures~\ref{fig:p1-drawing} and \ref{fig:p1-polyprism}):
 
 \begin{verbatim}
 # Draw a polygon and make a polygonal prism
@@ -462,7 +462,7 @@ myv.show()
         Screen-shot of interactively drawing the contour of a 3D polygonal
         prism, as viewed from above.
     }
-    \label{fig:drawing}
+    \label{fig:p1-drawing}
 \end{figure}
 
 \begin{figure}
@@ -474,7 +474,7 @@ myv.show()
         a) forward modeled gravity anomaly.
         b) 3D plot of the polygonal prism.
     }
-    \label{fig:polyprism}
+    \label{fig:p1-polyprism}
 \end{figure}
 
 
@@ -494,7 +494,7 @@ described in \citet{fedi2012}. These methods aim to produce an image of the
 geologic source from the observed gravity or magnetic data. The following code
 sample uses the ``sandwich model'' method \citep{pedersen1991} to image the
 polygonal prism, produced in the previous section, based on its gravity anomaly
-(Figure~\ref{fig:imaging}):
+(Figure~\ref{fig:p1-imaging}):
 
 \begin{verbatim}
 estimate = gravmag.imaging.sandwich(x, y, z, gz,
@@ -523,7 +523,7 @@ myv.show()
         blocks are a cutoff of the imaged body. The black contours are the true
         source of the gravity anomaly.
     }
-    \label{fig:imaging}
+    \label{fig:p1-imaging}
 \end{figure}
 
 Also implemented in Fatiando a Terra are some recent developments in
@@ -533,8 +533,8 @@ anomalous densities'' by \citet{uieda2012} is implemented in the
 methods, this is an inversion method, i.e., it estimates a physical
 property distribution (density in the case of gravity data) that fits
 the observed data. This particular method requires the user to specify a
-``seed'' (Figure~\ref{fig:seed}) around which the estimated density
-distribution grows (Figure~\ref{fig:harvester}):
+``seed'' (Figure~\ref{fig:p1-seed}) around which the estimated density
+distribution grows (Figure~\ref{fig:p1-harvester}):
 
 \begin{verbatim}
 # Make a mesh and a seed
@@ -581,7 +581,7 @@ myv.show()
         gravity anomaly. The black contours are the true source of the gravity
         anomaly.
     }
-    \label{fig:seed}
+    \label{fig:p1-seed}
 \end{figure}
 
 \begin{figure}
@@ -593,7 +593,7 @@ myv.show()
         source of the gravity anomaly. Notice how the inversion was able to
         recover the approximate geometry of the true source.
     }
-    \label{fig:harvester}
+    \label{fig:p1-harvester}
 \end{figure}
 
 
@@ -607,7 +607,7 @@ data. To generate the travel-times we used a seismic wave velocity model
 constructed from an image file. The colors of the image are converted to
 gray-scale and the intensity is mapped to seismic wave velocity by the
 \texttt{img2prop} method of the \texttt{fatiando.mesher.SquareMesh}
-class. This model (Figure~\ref{fig:tomo}) is then used to calculate the
+class. This model (Figure~\ref{fig:p1-tomo}) is then used to calculate the
 travel-times between a random set of earthquake locations and seismic
 receivers (seismometers):
 
@@ -678,7 +678,7 @@ mpl.show()
 
 Even though the implementation in \texttt{fatiando.seismic.srtomo} is greatly
 simplified and not usable in real tomography problems, the result in
-Figure~\ref{fig:tomo} illustrates interesting inverse problem concepts.  Notice
+Figure~\ref{fig:p1-tomo} illustrates interesting inverse problem concepts.  Notice
 how the estimated velocity is blurred in the corners where no rays pass
 through. This is because the data (travel-times) provide no information about
 the velocity in those areas. Areas like those constitute the null space of the
@@ -707,7 +707,7 @@ are no rays.
         the majority of residuals are close to 0 s, indicating a good fit to
         the data.
     }
-    \label{fig:tomo}
+    \label{fig:p1-tomo}
 \end{figure}
 
 
