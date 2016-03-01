@@ -66,7 +66,7 @@ wc: all
 # so cleanup is easy.
 clean::
 	rm -rf $(OUTPUT)/ *.aux
-	rm -rf $(FIGS)/*-eps-converted-to.pdf
+	find . -name "*-eps-converted-to.pdf" -exec rm -v {} \;
 
 
 # BUILD THE SOURCES

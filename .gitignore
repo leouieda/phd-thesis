@@ -1,11 +1,5 @@
-.ipynb_checkpoints
-*.pyc
 *~
 *.swp
-manuscript/output/
-manuscript/*.aux
-manuscript/figures/*-eps-converted-to.pdf
-code/*.png
-code/results/*.pickle
-code/results/south-america-moho.zip
-
+output/
+*.aux
+*-eps-converted-to.pdf
