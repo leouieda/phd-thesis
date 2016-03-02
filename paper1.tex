@@ -38,54 +38,49 @@ field measurements. Seismics and seismology use the ground motion caused by
 elastic waves from active (man-made) and passive (earthquakes) sources,
 respectively.
 
-The seismic method is among the most widely studied due to the high
-industry demand. Thus, a range of well established open-source software
-have been developed for seismic processing. These include
-\href{http://www.cwp.mines.edu/cwpcodes/}{Seismic Un*x} (SU)
-\citep{stockwelljr.1999},
-\href{http://www.ahay.org/}{Madagascar} \citep{madagascardevelopmentteam2013},
-\href{http://opendtect.org}{OpendTect}, and
-\href{http://www.gebrproject.com}{GêBR}. A noteworthy open-source
-project that is not seismic related is the
-\href{http://gmt.soest.hawaii.edu/}{Generic Mapping Tools}
-(GMT) project
-\citet{wessel1991}. The GMT are a well established collection of command-line
-programs for plotting maps with a variety of different map projections.
-For geodynamic modeling there is the
-\href{http://www.geodynamics.org}{Computational Infrastructure for
-Geodynamics}, which has grouped various well documented software
-packages. However, even with this wide range of well maintained software
-projects, many geophysical modeling software that are provided online
-still have no open-source license statement, have cryptic I/O files, are
-hard to integrate into a pipeline, and make code reuse and remixing
-challenging. Some of these problems are being worked on by the
-\href{http://geosys.usc.edu/projects/seatree/}{Solid Earth Teaching and
-Research Environment} (SEATREE) \citet{milner2009} by providing a common
-graphical interface for previously existing software. The numerical
-computations are performed by the pre-existing underlying C/Fortran
-programs. Conversely, the SEATREE code (written in Python) handles the
-I/O and user interface. This makes the use of these tools easier and
-more approachable to students. However, the lack of a common API means
-that the code for these programs cannot be easily combined to create new
-modeling tools.
+The seismic method is among the most widely studied due to the high industry
+demand. Thus, a range of well established open-source software have been
+developed for seismic processing. These include Seismic Un*x \citep[][
+\url{http://www.cwp.mines.edu/cwpcodes/}]{stockwelljr.1999}, Madagascar
+\citep[][ \url{http://www.ahay.org/}]{madagascardevelopmentteam2013}, OpendTect
+(\url{http://opendtect.org}), and GêBR (\url{http://www.gebrproject.com}). A
+noteworthy open-source project that is not seismic related is the Generic
+Mapping Tools (GMT) project \citep[][
+\url{http://gmt.soest.hawaii.edu/}]{wessel1991}. The GMT are a well established
+collection of command-line programs for plotting maps with a variety of
+different map projections.  For geodynamic modeling there is the Computational
+Infrastructure for Geodynamics (\url{http://www.geodynamics.org}), which has
+grouped various well documented software packages. However, even with this wide
+range of well maintained software projects, many geophysical modeling software
+that are provided online still have no open-source license statement, have
+cryptic I/O files, are hard to integrate into a pipeline, and make code reuse
+and remixing challenging. Some of these problems are being worked on by the
+Solid Earth Teaching and Research Environment (SEATREE) \citep[][
+\url{http://geosys.usc.edu/projects/seatree/}]{milner2009} by providing a
+common graphical interface for previously existing software. The numerical
+computations are performed by the pre-existing underlying C/Fortran programs.
+Conversely, the SEATREE code (written in Python) handles the I/O and user
+interface. This makes the use of these tools easier and more approachable to
+students. However, the lack of a common API means that the code for these
+programs cannot be easily combined to create new modeling tools.
 
-\href{http://www.fatiando.org}{Fatiando a Terra} aims at providing such an API
+Fatiando a Terra (\url{http://www.fatiando.org}) aims at providing such an API
 for geophysical modeling. Functions in the \texttt{fatiando} package use
 compatible data and mesh formats so that the output of one modeling function
 can be used as input for another. Furthermore, routines can be combined and
 reused to create new modeling algorithms.  Fatiando a Terra also automates
-common tasks such as griding, map plotting with
-\href{http://matplotlib.org}{Matplotlib} \citep{hunter2007}, and 3D plotting
-with \href{http://code.enthought.com/projects/mayavi}{Mayavi}
-\citep{ramachandran2011}.  Version 0.1 of Fatiando a Terra is focused on
-gravity and magnetic methods because this is the main focus of the developers.
-However, simple ``toy'' problems for seismology and geothermics are available
-and can be useful for teaching geophysics.
+common tasks such as griding, map plotting with Matplotlib \citep[][
+\url{http://matplotlib.org}]{hunter2007}, and 3D plotting with Mayavi \citep[][
+\url{http://code.enthought.com/projects/mayavi}]{ramachandran2011}.  Version
+0.1 of Fatiando a Terra is focused on gravity and magnetic methods because this
+is the main focus of the developers.  However, simple ``toy'' problems for
+seismology and geothermics are available and can be useful for teaching
+geophysics.
 
-The following sections illustrate the functionality and design of
-Fatiando a Terra using various code samples. An
-\href{http://ipython.org/}{IPython} \citep{perez2007} notebook file with these
-code samples is provided by \citet{uieda2013} at
+The following sections illustrate the functionality and design of Fatiando a
+Terra using various code samples. An IPython \citep[][
+\url{http://ipython.org/}]{perez2007} notebook file with these code samples is
+provided by \citet{uieda2013} at
 \url{http://dx.doi.org/10.6084/m9.figshare.708390}.
 
 
@@ -180,7 +175,7 @@ Notice that, in the calls to \texttt{mpl.contourf} and
 common practice in geophysics for x to point North and y to point East.
 
 Map projections in Matplotlib are handled by the
-\href{http://matplotlib.org/basemap}{Basemap toolkit}. The
+Basemap toolkit (\url{http://matplotlib.org/basemap}). The
 \texttt{fatiando.vis.mpl} module also provides helper functions to
 automate the use of this toolkit. The \texttt{fatiando.vis.mpl.basemap}
 function automates the creation of the \texttt{Basemap} objects with
