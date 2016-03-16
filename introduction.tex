@@ -21,13 +21,26 @@ and groundwater monitoring \citep{humphrey2016}.
 
 
 Deriving geophysical Earth models from gravity data is an inverse problem.
-
 Designing a method for solving these inverse problems presents many challenges.
+The first challenge in developing an inversion method is to establish the
+functional mapping between the model parameters and the data.
+This is known as the forward problem.
+The forward problem must be solved in a stable and accurate way for the
+inversion to succeed.
+The second challenge is to choose and implement an optimization algorithm to
+estimate the model parameters that best fit the observed data.
+There are several well established optimization methods to choose from the
+literature, for example, the gradient descent Gauss-Newton method or the
+stochastic Genetic Algorithm.
+The optimization algorithm is problem agnostic, meaning that it does not depend
+on the type of geophysical data or parametrization used.
+Finally, there is the challenge of stabilizing the inverse problem.
+This is often done through some form of regulatization.
+Each regularizing function favors different attributes, such as smoothness or
+compactness.
+Choosing an appropriate regularizing function is an indirect way to include
+prior geological or geophysical information.
 
-The first stage in developing an inversion method is to establish the
-functional mapping between the model parameters and the data, known as the
-forward problem.
-
-For the inversion to succeed, the forward problem must be solved in a stable
-and accurate way.
-
+When developing a new inversion methodology, one must implement all of the
+above (forward problem, optimization, and regularization) in a software
+application.
