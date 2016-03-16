@@ -1,7 +1,7 @@
 \chapter{Introduction}
 
 
-Gravity data as used in geophysics to investigate the subsurface.
+Gravity data is used in geophysics to investigate the subsurface.
 Gravity data can be acquired on the ground, airborne, shipborne or in satellites.
 The range of acquisition means that gravity can be used in a range of scales.
 Ground and airborne are used in local or regional studies, from mining to
@@ -41,6 +41,45 @@ compactness.
 Choosing an appropriate regularizing function is an indirect way to include
 prior geological or geophysical information.
 
-When developing a new inversion methodology, one must implement all of the
-above (forward problem, optimization, and regularization) in a software
-application.
+When developing a new inversion methodology, one must implement in a software
+application all three components of an inversion method (forward problem,
+optimization, and regularization).
+Luckily, the components can usually be uncoupled.
+The forward problem does not depend on the optimization and regularization.
+Likewise, the optimization algorithm requires only a knowledge of a function to
+optimize (and possibly its derivatives), no matter what is the forward problem
+or regularizing function.
+Changing the regularizing function used in principle does not require changes
+to the forward problem or the optimization method.
+Thus, the ideal implementation would be to have independent and reusable
+forward modeling, optimization, and regularization routines.
+
+Here, we develop two software projects and apply their reusable components to
+develop a 3D gravity inversion method in spherical coordinates.
+Chapter~\ref{chap:tesseroids} describes the open-source software
+\textit{Tesseroids}.
+This C language program calculates the gravitational potential and its first
+and second derivatives of a tesseroid (or spherical prism).
+The software also improves upon existing algorithms for the forward modeling
+calculations.
+Chapter~\ref{chap:fatiando} describes the Python language library
+\textit{Fatiando a Terra}.
+The library contains a collection of functions and classes for forward
+modeling, data and model visualization, data processing, and inversion.
+The optimization and regularization components are uncoupled from specific
+forward problems.
+Thus, they can be reused and combined to implement new inversion methods.
+\textit{Fatiando a Terra} also implements the tesseroid forward modeling
+algorithm described in Chapter~\ref{chap:tesseroids}.
+Finally, in Chapter~\ref{chap:moho} we build upon the foundation of
+Chapters~\ref{chap:tesseroids} and \ref{chap:fatiando} to develop a novel
+gravity inversion method.
+The method estimates the depth of the crust-mantle interface (the Moho) in a
+spherical approximation from observed gravity data.
+The software implementation of the inversion combines and extends the
+optimization, regularization, and tesseroid forward modeling available in
+\textit{Fatiando a Terra}.
+We apply our method to estimate the depth of the Moho for the South American
+continent.
+The estimated Moho depths agree with previous models and known large scale
+tectonic features.
