@@ -1,1 +1,39 @@
 \chapter{Conclusions}
+
+
+We have developed two open-source software packages that implement the
+components required for building an inversion method: forward modeling,
+optimization, and regularization.
+We used these components to develop a fast gravity inversion method to estimate
+the depth of the crust-mantle interface (the Moho) in a spherical
+approximation.
+We then applied the proposed method to estimate the Moho depth for South
+America.
+
+The \textit{Tesseroids} software is a collection of command-line
+programs developed in the C programming language.
+The programs calculate the gravitational potential and its first and second
+derivatives for a tesseroid (spherical prism) model.
+We implemented an adaptive discretization algorithm to guarantee the accuracy
+of the computations.
+The adaptive discretization is controlled by the distance-size
+ratio ($D$).
+Higher values of $D$ result in finner discretization and vice-versa.
+Furthermore, we investigated the accuracy of the calculations as a function of
+$D$.
+Contrary to previous assumptions, our results showed that the first and second
+derivatives require finner discretization than the gravitational potential to
+achieve the same accuracy level.
+The values of the distance-size ratio that yield a maximum error of 0.1\%
+are $D = 1$ for the gravitational potential, $D = 1.5$ for the first
+derivatives, and $D = 8$ for the second derivatives.
+
+\textit{Fatiando a Terra} is a library implemented in the Python programming
+language.
+The library contains functions and classes for data processing, visualization,
+forward modeling, and inversion.
+The tools for inverse problems provide generic optimization and regularization
+routines that can be combined with the existing forward modeling routines to
+implement new inversion methods.
+To date, the project has received contributions from nine developers in three
+different countries.
