@@ -32,8 +32,15 @@ derivatives, and $D = 8$ for the second derivatives.
 language.
 The library contains functions and classes for data processing, visualization,
 forward modeling, and inversion.
-The tools for inverse problems provide generic optimization and regularization
-routines that can be combined with the existing forward modeling routines to
-implement new inversion methods.
+A new inversion method can be implemented by combining the existing forward
+modeling functions with the problem agnostic optimization and regularization
+tools in the library.
+Using these tools, the amount of code required to implement new methods is
+reduced, increasing the speed of the cycle of prototyping a new algorithm,
+testing, and then refining it.
+The project has been used in scholarly works such as
+\citet{hidalgo-gato2015a}, \citet{niccoli2015}, \citet{oliveirajr.2015},
+and \citet{bassett2016}.
 To date, the project has received contributions from nine developers in three
 different countries.
+
