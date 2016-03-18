@@ -46,3 +46,43 @@ The project has been used in scholarly works such as
 \citet{oliveirajr.2015}, and \citet{bassett2016}.
 To date, the project has received contributions from nine developers in three
 different countries.
+
+We used the tesseroid forward modeling and inverse problem toolkit of
+\textit{Fatiando a Terra} to implement a new non-linear gravity inversion
+method to estimate the depth of the Moho.
+The inversion method uses the Gauss-Newton formulation of Bott's method
+proposed by \citet{silva2014}.
+In this formulation, the Jacobian (sensitivity) matrix is approximated by a
+linear diagonal matrix.
+This eliminates the high computational cost of calculating the full dense
+Jacobian matrix for every iteration of the Gauss-Newton method.
+We stabilize the inverse problem through smoothness regularization.
+The use of regularization required that we abandon the elimination of linear
+systems of the traditional Bott's method.
+However, we maintained computational efficiency by taking advantage of the fact
+that all matrices involved are sparse.
+Our benchmarks suggest that less than 0.1\% of the computation time required
+for an inversion is spent on matrix operations and solving linear systems.
+We also estimate the regularization parameter and two other hyper-parameters of
+the inversion through cross-validation procedures.
+
+The applications to synthetic data show the
+efficiency of the proposed inversion method in retrieving smooth Moho depth
+variations.
+The cross-validation procedures are able to correctly estimate an optimal
+regularization parameter, anomalous Moho density-contrast, and the reference
+level (the depth of the Normal Earth Moho).
+We applied the proposed method to estimate the Moho depth of the South American
+continent.
+The estimated Moho depths are in agreement with previous models and with the
+major tectonic provinces of the continent.
+Notable misfits between the observed and predicted gravity data are in the
+Andes, northern Venezuela, and the Paraná, Solimões, and Amazon Basins.
+These regions also present a high misfit with Moho depth estimates from
+seismology.
+Discrepancies between gravity-derived and seismological estimates of Moho depth
+may indicate the presence of other density anomalies with the crust or upper
+mantle.
+For example, \citet{mariani2013} and \citet{nunn1988} explain the discrepancies
+in the Paraná and Amazon Basins, respectively, as high density material in the
+lower crust.
