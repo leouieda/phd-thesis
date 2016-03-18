@@ -13,10 +13,10 @@ America.
 The \textit{Tesseroids} software is a collection of command-line
 programs developed in the C programming language.
 The programs calculate the gravitational potential and its first and second
-derivatives for a tesseroid (spherical prism) model.
-We implemented an adaptive discretization algorithm to guarantee the accuracy
-of the computations.
-The adaptive discretization is controlled by the distance-size
+derivatives of a tesseroid (spherical prism) model.
+We implemented and improved upon an adaptive discretization algorithm to
+guarantee the accuracy of the computations.
+The adaptive discretization is controlled by a scalar called the distance-size
 ratio ($D$).
 Higher values of $D$ result in finner discretization and vice-versa.
 Furthermore, we investigated the accuracy of the calculations as a function of
@@ -27,20 +27,22 @@ achieve the same accuracy level.
 The values of the distance-size ratio that yield a maximum error of 0.1\%
 are $D = 1$ for the gravitational potential, $D = 1.5$ for the first
 derivatives, and $D = 8$ for the second derivatives.
+These values are included as defaults in version 1.2 of the \textit{Tesseroids}
+software.
 
-\textit{Fatiando a Terra} is a library implemented in the Python programming
-language.
+\textit{Fatiando a Terra} is a software library implemented in the Python
+programming language.
 The library contains functions and classes for data processing, visualization,
-forward modeling, and inversion.
-A new inversion method can be implemented by combining the existing forward
-modeling functions with the problem agnostic optimization and regularization
-tools in the library.
-Using these tools, the amount of code required to implement new methods is
+inversion, and forward modeling.
+The inverse problems package of the library offers generic classes for
+optimization and regularization.
+These classes can be extended and combined with the existing forward modeling
+functions to implement new inversion methods.
+Using these tools, the amount of code required to implement a new method is
 reduced, increasing the speed of the cycle of prototyping a new algorithm,
 testing, and then refining it.
 The project has been used in scholarly works such as
-\citet{hidalgo-gato2015a}, \citet{niccoli2015}, \citet{oliveirajr.2015},
-and \citet{bassett2016}.
+\citet{carlos2014}, \citet{hidalgo-gato2015a}, \citet{niccoli2015},
+\citet{oliveirajr.2015}, and \citet{bassett2016}.
 To date, the project has received contributions from nine developers in three
 different countries.
-
