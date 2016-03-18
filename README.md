@@ -13,26 +13,6 @@ Institution: [Observatório Nacional](http://www.on.br/)
 Each of the following chapters have been published or submitted for
 publication.
 
-### Modeling the Earth with Fatiando a Terra
-
-Geophysics is the science of using physical observations of the Earth to infer
-its inner structure.  Generally, this is done with a variety of numerical
-modeling techniques and inverse problems.  The development of new algorithms
-usually involves copy and pasting of code, which leads to errors and poor code
-reuse.  Fatiando a Terra is a Python library that aims to automate common tasks
-and unify the modeling pipeline inside of the Python language.  This allows
-users to replace the traditional shell scripting with more versatile and
-powerful Python scripting.  The library can also be used as an API for
-developing stand-alone programs.  Algorithms implemented in Fatiando a Terra
-can be combined to build upon existing functionality.  This flexibility
-facilitates prototyping of new algorithms and quickly building interactive
-teaching exercises.  In the future, we plan to continuously implement sample
-problems to help teach geophysics as well as classic and state-of-the-art
-algorithms.
-
-Published in the [Proceedings of the 12th Python in Science Conference (Scipy
-2013)](http://www.leouieda.com/talks/scipy2013.html).
-
 ### Tesseroids: forward modeling gravitational fields in spherical coordinates
 
 We present the open-source software Tesseroids, a set of command-line programs
@@ -58,9 +38,29 @@ These values were incorporated as defaults in the software.
 
 Accepted for publication in the journal Geophysics.
 See [pinga-lab/paper-tesseroids](https://github.com/pinga-lab/paper-tesseroids)
+for the source code and data associated with the paper.
+
+### Modeling the Earth with Fatiando a Terra
+
+Geophysics is the science of using physical observations of the Earth to infer
+its inner structure.  Generally, this is done with a variety of numerical
+modeling techniques and inverse problems.  The development of new algorithms
+usually involves copy and pasting of code, which leads to errors and poor code
+reuse.  Fatiando a Terra is a Python library that aims to automate common tasks
+and unify the modeling pipeline inside of the Python language.  This allows
+users to replace the traditional shell scripting with more versatile and
+powerful Python scripting.  The library can also be used as an API for
+developing stand-alone programs.  Algorithms implemented in Fatiando a Terra
+can be combined to build upon existing functionality.  This flexibility
+facilitates prototyping of new algorithms and quickly building interactive
+teaching exercises.  In the future, we plan to continuously implement sample
+problems to help teach geophysics as well as classic and state-of-the-art
+algorithms.
+
+Published in the [Proceedings of the 12th Python in Science Conference (Scipy
+2013)](http://www.leouieda.com/talks/scipy2013.html).
 
 ### Fast non-linear gravity inversion in spherical coordinates with application to the South American Moho
-
 
 Estimating the relief of the Moho from gravity data is a computationally
 intensive non-linear inverse problem.  What is more, the modeling must take the
@@ -90,3 +90,4 @@ processing.
 
 Submitted for publication in the Geophysical Journal International.
 See [pinga-lab/paper-moho-inversion-tesseroids](https://github.com/pinga-lab/paper-moho-inversion-tesseroids)
+for the source code and data associated with the paper.
