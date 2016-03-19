@@ -36,26 +36,29 @@ estimate the model parameters that best fit the observed data.
 There are several well established optimization methods to choose from the
 literature, for example, gradient-descent methods like the Gauss-Newton method
 and Steepest Descent or stochastic  methods like the Genetic Algorithm.
-The optimization method is independent of the forward problem.
-Finally, there is the challenge of stabilizing the inverse problem.
-This is often done through some form of regularization.
-Each regularizing function favors different attributes, such as smoothness or
-compactness.
+Finally, there is the challenge of stabilizing the ill-posed inverse problem,
+usually through regularization.
+Different regularizing functions favor different model attributes, such as
+smoothness or compactness.
 Choosing an appropriate regularizing function is an indirect way to include
-prior geological or geophysical information.
+prior geological or geophysical information in the inverse problem.
 
 When developing a new inversion methodology, one must implement in a software
-application all three components of an inversion method (forward problem,
+application all three components of an inversion method (the forward problem,
 optimization, and regularization).
 Luckily, the components can usually be uncoupled.
-The forward problem does not depend on the optimization and regularization.
-Likewise, the optimization algorithm requires only a knowledge of a function to
-optimize (and possibly its derivatives), no matter what is the forward problem
-or regularizing function.
-Changing the regularizing function used in principle does not require changes
-to the forward problem or the optimization method.
-Thus, the ideal implementation would be to have independent and reusable
-forward modeling, optimization, and regularization routines.
+For example, the implementation of the forward problem does not depend on the
+choice of optimization method or regularization.
+Likewise, the software implementation of optimization requires only a knowledge
+of a function to optimize (and possibly its derivatives), no matter what is the
+forward problem or regularizing function.
+Furthermore, changing the regularizing function used, in principle, does not
+require changes to the implementations of the forward problem and the
+optimization method.
+Thus, the ideal software design is to have independent and reusable routines
+for forward modeling, optimization, and regularization.
+These three components can be combined in different ways to produce
+new inversion software.
 
 Here, we develop two software projects and apply their reusable components to
 develop a 3D gravity inversion method in spherical coordinates.
@@ -67,22 +70,21 @@ The software also improves upon existing algorithms for the forward modeling
 calculations.
 Chapter~\ref{chap:fatiando} describes the Python language library
 \textit{Fatiando a Terra}.
-The library contains a collection of functions and classes for forward
-modeling, data and model visualization, data processing, and inversion.
-The optimization and regularization components are uncoupled from specific
-forward problems.
-Thus, they can be reused and combined to implement new inversion methods.
+The library contains a collection of functions and classes for inverse
+problems, forward modeling, data and model visualization, and data processing.
+The inverse problems tools implement optimization and regularization classes
+that are uncoupled from specific forward problems.
+These tools can be reused and combined in different ways to implement new
+inversion methods.
 \textit{Fatiando a Terra} also implements the tesseroid forward modeling
 algorithm described in Chapter~\ref{chap:tesseroids}.
 Finally, in Chapter~\ref{chap:moho} we build upon the foundation of
 Chapters~\ref{chap:tesseroids} and \ref{chap:fatiando} to develop a novel
 gravity inversion method.
-The method estimates the depth of the crust-mantle interface (the Moho) in a
-spherical approximation from observed gravity data.
+The method estimates the depth of the crust-mantle interface (the Moho) from
+observed gravity data using a spherical Earth approximation.
 The software implementation of the inversion combines and extends the
-optimization, regularization, and tesseroid forward modeling available in
+optimization, regularization, and forward modeling available in
 \textit{Fatiando a Terra}.
 We apply our method to estimate the depth of the Moho for the South American
 continent.
-The estimated Moho depths agree with previous models and known large-scale
-tectonic features.
