@@ -1,19 +1,19 @@
 \begin{abstract}
 
-Nós apresentamos avanços metodológicos na área de modelagem direta e inversão
+Apresentamos avanços metodológicos na área de modelagem direta e inversão
 regional de dados de gravimetria por satélite.
-Com esse fim, nós desenvolvemos dois projetos de software de código livre.
+Com esse fim, desenvolvemos dois projetos de software de código livre.
 O primeiro é um conjunto de programas de linha de comando feitos na linguagem C
 chamado \textit{Tesseroids}.
 Os programas calculam o potencial, aceleração e tensor gradiente gravitacional
 de um prisma esférico, ou tesseroide.
 \textit{Tesseroids} implementa e aprimora um algoritmo de discretização
-adaptativa para garantir a acurácia das computações automaticamente.
+adaptativa para automaticamente garantir a acurácia das computações.
 Nossos resultados com testes numéricos mostram que, para obter o mesmo nível de
 acurácia, a aceleração gravitacional demanda uma discretização mais fina que o
 potencial.
-Por sua vez, o tensor gradiente gravitacional demanda discretização mais final
-ainda que para a aceleração.
+Por sua vez, o tensor gradiente gravitacional demanda discretização mais fina
+ainda que a aceleração.
 O segundo software é o \textit{Fatiando a Terra}, uma biblioteca feita na
 linguagem Python para inversão, modelagem direta, processamento e visualização
 de dados.
@@ -25,7 +25,7 @@ Nós combinamos os recursos de inversão e modelagem direta com tesseroides do
 \textit{Fatiando a Terra} para desenvolver um método rápido para a inversão
 não-linear de dados de gravidade.
 O método estima a profundidade da interface crosta-manto (a Moho) baseado em
-dados de gravidade utilizando uma aproximação esférica para a Terra.
+dados de gravidade utilizando uma aproximação esférica da Terra.
 Nós adaptamos o método de Bott, que é computacionalmente eficiente, para
 incluir regularização de suavidade  e utilizar tesseroides ao invés de prismas
 retangulares retos.
@@ -37,12 +37,12 @@ maneira automática.
 Testes com dados sintéticos confirmam a capacidade do método proposto de
 estimar os três hiper-parâmetros e o relevo suave da Moho.
 Por fim, nós aplicamos nosso método de inversão para gerar um modelo de
-profundidades da Moho para a América do Sul.
+profundidade da Moho para a América do Sul.
 Nosso modelo ajusta os dados de gravidade observados e estimativas da
 profundidade da Moho provenientes da sismologia
 nas regiões oceânicas e nas partes central e Leste do continente.
 Nós observamos desajustes aos dados na região dos Andes, onde a profundidade da
-Moho é a maior para o continente.
+Moho é a maior do continente.
 Nas bacias do Amazonas, Solimões e Paraná, o modelo ajusta os dados de
 gravidade mas não as estimativas da sismologia.
 Essas discrepâncias indicam a presença de anomalias de densidade na crosta ou
