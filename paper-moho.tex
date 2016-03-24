@@ -8,37 +8,30 @@ International.
 \section{Abstract}
 
 Estimating the relief of the Moho from gravity data is a computationally
-intensive non-linear inverse problem.
-What is more, the modeling must take the Earths curvature into account when
-the study area is of regional scale or greater.
-We present a regularized non-linear gravity inversion method that has a low
-computational footprint and employs a spherical Earth approximation.
-To achieve this, we combine the highly efficient Bott's method with
-smoothness regularization and a discretization of the anomalous Moho into
-tesseroids (spherical prisms).
-The computational efficiency of our method is attained by harnessing the
-fact that all matrices involved are sparse.
-The inversion results are controlled by three hyper-parameters: the
-regularization parameter, the anomalous Moho density-contrast, and the
-reference Moho depth.
-We estimate the regularization parameter using the method of hold-out
-cross-validation.
-Additionally, we estimate the density-contrast and the reference depth
-using knowledge of the Moho depth at certain points.
-We apply the proposed method to estimate the Moho depth for the South
-American continent using satellite gravity data and seismological data.
-The final Moho model is in accordance with previous gravity-derived models
-and seismological data.
-The misfit to the gravity and seismological data is worse in the Andes and
-best in oceanic areas, central Brazil and Patagonia, and along the Atlantic
-coast.
-Similarly to previous results, the model suggests a thinner crust of 30-35
-km under the Andean foreland basins.
-Discrepancies with the seismological data are greatest in the Guiana
-shield, the central Solimões and Amazon basins, the Paraná basin, and the
-Borborema province.
-These differences suggest the existence of crustal or mantle density
-anomalies that were unaccounted for during gravity data processing.
+intensive non-linear inverse problem.  What is more, the modeling must take the
+Earths curvature into account when the study area is of regional scale or
+greater.  We present a regularized non-linear gravity inversion method that has
+a low computational footprint and employs a spherical Earth approximation.  To
+achieve this, we combine the highly efficient Bott's method with smoothness
+regularization and a discretization of the anomalous Moho into tesseroids
+(spherical prisms).  The computational efficiency of our method is attained by
+harnessing the fact that all matrices involved are sparse.  The inversion
+results are controlled by three hyper-parameters: the regularization parameter,
+the anomalous Moho density-contrast, and the reference Moho depth.  We estimate
+the regularization parameter using the method of hold-out cross-validation.
+Additionally, we estimate the density-contrast and the reference depth using
+knowledge of the Moho depth at certain points.  We apply the proposed method to
+estimate the Moho depth for the South American continent using satellite
+gravity data and seismological data.  The final Moho model is in accordance
+with previous gravity-derived models and seismological data.  The misfit to the
+gravity and seismological data is worse in the Andes and best in oceanic areas,
+central Brazil and Patagonia, and along the Atlantic coast.  Similarly to
+previous results, the model suggests a thinner crust of 30-35 km under the
+Andean foreland basins.  Discrepancies with the seismological data are greatest
+in the Guyana Shield, the central Solimões and Amazonas Basins, the Paraná
+Basin, and the Borborema province.  These differences suggest the existence of
+crustal or mantle density anomalies that were unaccounted for during gravity
+data processing.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -47,21 +40,23 @@ anomalies that were unaccounted for during gravity data processing.
 The Mohorovičić discontinuity (or Moho) that marks the transition from the
 crust to the mantle, is studied almost exclusively through indirect geophysical
 methods.
-The two main methods used to estimate the depth of the Moho are seismology,
-with both natural and controlled sources, and gravimetry.
+The two main geophysical methods used to estimate the depth of the Moho are
+seismology, with both natural and controlled sources, and gravimetry.
 With the advent of satellite gravimetry missions like GRACE and GOCE,
-gravity derived crustal models can be produced in regional or global scales
+gravity-derived crustal models can be produced in regional or global scales
 \citep[e.g. ][]{reguzzoni2013,vandermeijde2013,vandermeijde2015}.
 New spherical harmonic gravity models that use these satellite observation,
 like GOCO5S \citep{mayer-guerr2015}, provide almost homogeneous data coverage
 in difficult to access regions traditionally poor in terrestrial data.
 An example is South America, where seismologic and terrestrial gravity data
-are traditionally concentrated around large urban centers and coastal areas.
+are traditionally concentrated around urban centers and coastal areas,
+resulting in large areas (e.g., forests and mountains) devoid of data.
 
 Estimating Moho depth from gravity data is a non-linear inverse problem.
-One can generalize this problem to estimating the relief of an interface,
-such as the basement of a sedimentary basin or the relief of the anomalous
-Moho.
+One can generalize this problem of estimating the depths of an interface
+separating two media,
+such as the sediment-basement interface of a sedimentary basin or the
+crust-mantle interface (Moho).
 Several methods have been developed over the years to solve this inverse
 problem, for example
 \citet{bott1960, barbosa1999b, barbosa1999a, barnes2012, leao1996, martins2010,
@@ -88,21 +83,27 @@ Recently, \citet{silva2014} extended and generalized the original method of
 \citet{bott1960} and \citet{santos2015} used this extension to estimate a
 basement relief with sharp boundaries.
 
-Most non-linear gravity inversion methods discretize the relief of the
-interface into juxtaposed right-rectangular prisms with a known density
-contrast.
-The inverse problem is then to estimate the thickness of each prism from the
-gravity data.
-The use of rectangular prisms implies a planar Earth approximation and may not
-be adequate for continental and global scale studies.
-In such cases, a spherical Earth approximation is preferred.
+A spherical Earth approximation is preferred when estimating the Moho depth
+from gravity data in continental and global scale studies.
 \citet{wieczorek1998} developed a spherical harmonic equivalent of the
 Parker-Oldenburg FFT algorithm and applied it to estimate the crustal structure
 of the Moon.
-\citet{reguzzoni2013} use a spherical approximation to estimate the global
-Moho relief from GOCE satellite gravity data.
-Conversely, one could adapt one of the methods developed for
-right-rectangular prisms to use tesseroids (spherical prisms) instead.
+\citet{reguzzoni2013} use a spherical Earth approximation to estimate the
+global Moho relief using data from the GOCE satellite mission.
+Another approach is to use
+non-spectral (space domain) gravity inversion methods.
+Many such methods were developed for estimating the basement relief of a
+sedimentary basin
+\citep[e.g., ][]{barbosa1999a, barbosa1999b, martins2010, martins2011, sun2014}.
+These methods approximate the sedimentary pack by a set of juxtaposed
+right-rectangular prisms.
+The top of the prisms coincide with the Earth's surface and the prisms'
+thicknesses represent the depths to the basement and are the parameters to be
+estimated in the inversion.
+The use of rectangular prisms implies a planar Earth approximation and may not
+be adequate for depth-to-Moho estimates in a continental-scale study.
+A straightforward way to circumvent this hindrance is to adapt one of the
+methods developed for rectangular prisms to use tesseroids (spherical prisms).
 One of the difficulties of this approach is that the forward problem for a
 tesseroid must be solved numerically.
 Two alternatives proposed in the literature to the numerical solution are
@@ -116,20 +117,21 @@ is close to the tesseroid \citep{asgharzadeh2007}.
 To overcome the numerical instability, \citet{li2011} proposed an adaptive
 discretization algorithm which was later improved upon by \citet{uieda2016}.
 
-In any gravity inversion for the relief of an interface, two hyper-parameters
-control the inversion results: the density-contrast between the two mediums
-and the reference level around which the interface undulates.
-The reference level is the depth of the Normal Earth Moho in the case of the
-anomalous Moho.
+In any gravity inversion for estimating the relief of an interface, two
+hyper-parameters control the inversion results: the density-contrast between
+the two media and the reference level around which the interface undulates.
+The reference level is the constant depth of the Normal Earth Moho in the case
+of the anomalous Moho.
 For regularized inversions, an additional hyper-parameter is the regularization
-parameter that balances data-misfit and regularization.
+parameter that balances the relative importance between the data-misfit measure
+and the regularizing function.
 The two most commonly used methods for estimating the regularization parameter
 are the L-curve criterion and Generalized Cross Validation (GCV).
 \citet{farquharson2004} provide for a thorough comparison of both methods.
 Estimating the density-contrast in a sedimentary basin context has been tackled
 by \citet{silva2006} and \citet{martins2010} when the basement depth is known
 at a few points.
-To the authors knowledge no attempt has been made to estimate the reference
+To the authors' knowledge no attempt has been made to estimate the reference
 level.
 
 We present a non-linear gravity inversion to estimate the Moho depth in
@@ -146,7 +148,7 @@ to estimate the regularization parameter.
 Additionally, we estimate the density-contrast and reference level
 simultaneously in a second cross-validation.
 Similarly to \citet{silva2006} and \citet{martins2010}, this cross-validation
-procedure uses knowledge of the Moho depth at certain points.
+procedure uses knowledge of the Moho depths at certain points.
 Finally, we apply the proposed method to estimate the Moho depth for South
 America using gravity data from the GOCO5S model \citep{mayer-guerr2015} and
 the seismological data of \citet{assumpcao2013a}.
@@ -156,9 +158,8 @@ the seismological data of \citet{assumpcao2013a}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Methodology}
 
-In potential field methods,
-we must isolate the target anomalous density distribution prior to modeling and
-inversion.
+In potential field methods, we must isolate the target anomalous density
+distribution before modeling and inversion.
 In our case, the target is the relief of the real Moho undulating around a
 reference Moho.
 We do this by removing all other effects from the gravity observations.
@@ -167,7 +168,7 @@ scalar gravity of an ellipsoidal reference Earth (the Normal Earth),
 hereafter denoted as $\gamma$.
 This effect is calculated on the same point $P$ where
 the gravity observation was made
-(Fig~\ref{fig:p3-anomalysketch}a-b).
+(Fig~\ref{fig:moho-anomalysketch}a-b).
 $\gamma(P)$ is calculated using
 the closed-form solution presented by \citet{li2001a}.
 The difference between the observed gravity at point P ($g(P)$)
@@ -176,12 +177,12 @@ is known as the gravity disturbance,
 
 \begin{equation}
     \delta(P) = g(P) - \gamma(P).
-    \label{eq:p3-disturbance}
+    \label{eq:moho-disturbance}
 \end{equation}
 
 The disturbance contains only the gravitational effects of density
 distributions that are anomalous with respect to the Normal Earth
-(see Fig.~\ref{fig:p3-anomalysketch}c).
+(see Fig.~\ref{fig:moho-anomalysketch}c).
 This includes all masses above the surface of the ellipsoid (the topography),
 the mass deficiency of the oceans,
 the mass deficiency of sedimentary basins,
@@ -190,28 +191,28 @@ heterogeneities below the upper mantle,
 and the effect of the difference between the real Moho
 topography and the Moho of the Normal Earth.
 
-In order to invert for the anomalous Moho relief,
+To estimate the anomalous Moho relief from gravity data,
 we must first isolate its gravitational attraction.
-Thus, all other effects
+Thus, all other gravitational effects
 must be either removed or assumed negligible.
-Here, we will remove the effect of the topography and oceans
-in order to obtain the full Bouguer disturbance
-(Fig~\ref{fig:p3-anomalysketch}d),
+Here, we will remove the gravitational effect produced by the known topography
+and ocean masses to obtain the full Bouguer disturbance
+(Fig~\ref{fig:moho-anomalysketch}d),
 
 \begin{equation}
     \delta_{bg}(P) = \delta(P) - g_{topo}(P).
-    \label{eq:p3-bouguer}
+    \label{eq:moho-bouguer}
 \end{equation}
 
 \noindent
-We will remove the effect of sedimentary basins
+We will also remove the gravitational effect of know sedimentary basins
 but assume that the effects of
 other crustal and mantle sources are negligible.
 Thus, the only effect left will be that of the anomalous Moho relief
-(Fig~\ref{fig:p3-anomalysketch}e).
+(Fig~\ref{fig:moho-anomalysketch}e).
 The gravitational attraction of the topography, oceans, and basins are
 calculated in a spherical Earth approximation by forward modeling using
-tesseroids (Fig.~\ref{fig:p3-tesseroid}).
+tesseroids (Fig.~\ref{fig:moho-tesseroid}).
 The tesseroid effects are calculated numerically using
 Gauss-Legendre Quadrature (GLQ) integration \citep{asgharzadeh2007}.
 The accuracy of the GLQ integration is improved by the adaptive discretization
@@ -220,16 +221,16 @@ scheme of \citet{uieda2016}.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\textwidth]{figures/paper-moho/problem-concept}
+    \includegraphics[width=0.8\textwidth]{figures/paper-moho/problem-concept}
     \caption{
         Sketch of the stages in gravity data correction and
         the discretization of the anomalous Moho relief using tesseroids.
         (a) The Earth and the measured gravity at point P ($g(P)$).
         (b) The Normal Earth and the calculated normal gravity at point P
         ($\gamma(P)$). $z_{ref}$ is the depth of the Normal Earth Moho.
-        (c) The gravity disturbance ($\delta(P)$) and
-        the corresponding density anomalies after removal of the normal gravity:
-        topography, oceans, crustal heterogeneities, and the anomalous Moho.
+        (c) The gravity disturbance ($\delta(P)$) and the corresponding density
+        anomalies after removal of the normal gravity: topography, oceans,
+        crustal and mantle heterogeneities, and the anomalous Moho.
         (d) The Bouguer disturbance ($\delta_{bg}(P)$) after topographic
         correction and the remaining density anomalies.
         (e) All density anomalies save the anomalous Moho are assumed to have
@@ -238,39 +239,39 @@ scheme of \citet{uieda2016}.
         tesseroids will have a negative density contrast while red tesseroids
         will have a positive one.
     }
-    \label{fig:p3-anomalysketch}
+    \label{fig:moho-anomalysketch}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics{figures/paper-moho/tesseroid-coord-sys}
+    \includegraphics[width=0.8\textwidth]{figures/paper-moho/tesseroid-coord-sys}
     \caption{Sketch of a tesseroid (spherical prism) in a geocentric coordinate
         system (X, Y, Z).
         Observations are made at point P with respect to it's local
         North-oriented coordinate system (x, y, z).
         After \citet{uieda2015}.
     }
-    \label{fig:p3-tesseroid}
+    \label{fig:moho-tesseroid}
 \end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Parametrization}
+\subsection{Parametrization and the forward problem}
 
 We parameterize the forward problem by discretizing the anomalous Moho
 into a grid of $M_{lon} \times M_{lat} = M$ juxtaposed tesseroids
-(Fig~\ref{fig:p3-anomalysketch}f).
+(Fig~\ref{fig:moho-anomalysketch}f).
 The true (real Earth) Moho varies in depth
 with respect to the Moho of the Normal Earth.
 Hereafter we will refer to the depth of the Normal Earth Moho as $z_{ref}$
-(see Fig.~\ref{fig:p3-anomalysketch}b).
-In cases where the true Moho is above $z_{ref}$,
+(see Fig.~\ref{fig:moho-anomalysketch}b).
+If the true Moho is above $z_{ref}$,
 the top of the $k$th tesseroid is the Moho depth $z_{k}$,
 the bottom is $z_{ref}$, and the density-contrast ($\Delta\rho$) is positive
-(red tesseroids in Fig~\ref{fig:p3-anomalysketch}f).
+(red tesseroids in Fig~\ref{fig:moho-anomalysketch}f).
 If the Moho is below $z_{ref}$, the top of the tesseroid is $z_{ref}$,
 the bottom is $z_k$, and $\Delta\rho$ is negative
-(grey tesseroids in Fig~\ref{fig:p3-anomalysketch}f).
+(grey tesseroids in Fig~\ref{fig:moho-anomalysketch}f).
 
 Considering that the absolute value of the density-contrasts
 of the tesseroids is a fixed parameter,
@@ -279,7 +280,7 @@ parameters $z_k$, $k=1, \ldots, M$,
 
 \begin{equation}
     d_i = f_i(\mathbf{p}),
-    \label{eq:p3-forward}
+    \label{eq:moho-forward}
 \end{equation}
 
 \noindent in which $d_i$ is the $i$th element of the $N$-dimensional predicted
@@ -296,75 +297,64 @@ of the tesseroid Moho model.
 \subsection{Inverse problem}
 
 We wish to estimate the parameter vector $\mathbf{p}$ from a set of observed
-gravity anomaly data $\mathbf{d}^o$.
+gravity data $\mathbf{d}^o$.
 The least-squares estimate is the one that minimizes the data-misfit function
 
 \begin{equation}
     \phi(\mathbf{p}) =
-    [\mathbf{d}^o - \mathbf{d}(\mathbf{p})]^T[\mathbf{d}^o - \mathbf{d}(\mathbf{p})].
-    \label{eq:p3-data-misfit}
+        [\mathbf{d}^o - \mathbf{d}(\mathbf{p})]^T
+        [\mathbf{d}^o - \mathbf{d}(\mathbf{p})].
+    \label{eq:moho-data-misfit}
 \end{equation}
 
 Function $\phi(\mathbf{p})$ is non-linear with respect to $\mathbf{p}$.
 Thus, we can determine its minimum using gradient-based
 iterative optimization
 methods like Gauss-Newton or Steepest Descent.
-Such methods start from an initial estimate $\mathbf{p}^0$ and iteratively
-update the estimate until a minimum is reached.
+Such methods start from an initial approximation to the model parameter vector
+$\mathbf{p}^0$ and estimate a parameter perturbation vector
+$\mathbf{\Delta p}^0$.
+The perturbation vector is used to update $\mathbf{p}^0$ to
+$\mathbf{p}^1 =  \mathbf{p}^0 + \mathbf{\Delta p}^0$.
+This procedure is repeated until a minimum of function $\phi(\mathbf{p})$
+(Eq.~\ref{eq:moho-data-misfit}) is reached.
 
 For the Gauss-Newton method,
-the update at the $k$th iteration,
-$\mathbf{\Delta p} = \mathbf{p}^{k+1} - \mathbf{p}^k$,
-is the solution of the linear system
+the parameter perturbation vector at the $k$th iteration $\mathbf{\Delta p}^k$
+is obtained by solving the linear system
 
 \begin{equation}
-    \mathbf{H}^k\mathbf{\Delta p} = -\mathbf{\nabla\phi}^k,
-    \label{eq:p3-gaussnewton}
+    \mathbf{H}^k\mathbf{\Delta p}^k = -\mathbf{\nabla\phi}^k,
+    \label{eq:moho-gaussnewton}
 \end{equation}
 
 \noindent in which
 $\mathbf{\nabla\phi}^k$ and $\mathbf{H}^k$ are, respectively,
 the gradient vector and the Hessian matrix of $\phi(\mathbf{p})$.
 
-The Steepest Descent method uses only the gradient direction
-to update the initial estimate \citep{kelley1987}.
-The update at the $k$th iteration is achieved by equating the Hessian
-in Eq.~\ref{eq:p3-gaussnewton} to the identity matrix,
-
-\begin{equation}
-    \mathbf{\Delta p} = -\mathbf{\nabla\phi}^k.
-    \label{eq:p3-steepest}
-\end{equation}
-
-\noindent
-Thus, it does not require the computation and storage of the Hessian matrix
-nor the solution of linear systems.
-However, the Steepest Descent method has poor convergence when the
-current solution is close to the minimum of the goal function
-\citep{kelley1987}.
-
 The gradient vector and the Gauss-Newton approximation of the Hessian matrix
 of $\phi(\mathbf{p})$ are, respectively,
 
 \begin{equation}
-    \mathbf{\nabla\phi}^k = -2\mathbf{A}^T[\mathbf{d}^o - \mathbf{d}(\mathbf{p}^k)],
-    \label{eq:p3-gradient}
+    \mathbf{\nabla\phi}^k = -2{\mathbf{A}^k}^T[\mathbf{d}^o - \mathbf{d}(\mathbf{p}^k)],
+    \label{eq:moho-gradient}
 \end{equation}
 
 \noindent
 and
 
 \begin{equation}
-    \mathbf{H}^k \approx 2\mathbf{A}^T\mathbf{A},
-    \label{eq:p3-hessian}
+    \mathbf{H}^k \approx 2{\mathbf{A}^k}^T{\mathbf{A}^k},
+    \label{eq:moho-hessian}
 \end{equation}
 
 \noindent in which
-$\mathbf{A}$ is the Jacobian or sensitivity matrix,
+$\mathbf{A}^k$ is the $N \times M$ Jacobian or sensitivity matrix
+whose elements are
 
 \begin{equation}
-    A_{ij} = \dfrac{\partial f_i}{\partial p_j}(\mathbf{p^k}).
-    \label{eq:p3-jacobian}
+    A_{ij}^k = \dfrac{\partial f_i}{\partial p_j}(\mathbf{p}^k).
+    \label{eq:moho-jacobian}
 \end{equation}
 
 
@@ -372,120 +362,118 @@ $\mathbf{A}$ is the Jacobian or sensitivity matrix,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Regularization}
 
-Non-linear inversions for the relief of an interface (like the Moho)
-are ill-posed and require additional constraints in the form of
-regularization \citep{silva2001}.
-A common approach is to use the first-order Tikhonov regularization to impose
-smoothness on the solution.
+Non-linear gravity inversions for estimating the relief of an interface
+separating two media (like the Moho) are ill-posed and require additional
+constraints in the form of regularization \citep{silva2001b}.
+A common approach is to use the first-order Tikhonov regularization
+\citep{tikhonov1977} to impose smoothness on the solution.
 The cost function for smoothness regularization is given by
 
 \begin{equation}
     \theta(\mathbf{p}) = \mathbf{p}^T\mathbf{R}^T\mathbf{R}\mathbf{p},
-    \label{eq:p3-regul}
+    \label{eq:moho-regul}
 \end{equation}
 
 \noindent where $\mathbf{R}$ is an $L \times M$ finite-difference matrix
-representing the $L$ first-order differences between adjacent tesseroids.
+representing $L$ first-order differences between adjacent tesseroids.
 
-The solution $\hat{\mathbf{p}}$ to the regularized inverse problem is the one that
-minimizes the goal function
+To transform the ill-posed inverse problem into a well-posed one via Tikhonov
+regularization, we adopted the well-established procedure
+of formulating a constrained inverse problem that is solved by minimizing an
+unconstrained goal function
 
 \begin{equation}
     \Gamma(\mathbf{p}) = \phi(\mathbf{p}) + \mu\theta(\mathbf{p}),
-    \label{eq:p3-goalfunction}
+    \label{eq:moho-goalfunction}
 \end{equation}
 
 \noindent
 in which $\mu$ is the regularization parameter that controls the balance
-between fitting the observed data and obeying the smoothness constraint.
+between fitting the observed data and obeying the smoothness constraint imposed
+by the regularizing function $\theta(\mathbf{p})$ (Eq.~\ref{eq:moho-regul}).
 
 The goal function $\Gamma(\mathbf{p})$ is also non-linear with respect to
-$\mathbf{p}$ and can be minimized using the Gauss-Newton or Steepest Descent
-methods.
+$\mathbf{p}$ and can be minimized using the Gauss-Newton method.
 The gradient vector and Hessian matrix of the goal function are, respectively,
 
 \begin{equation}
     \mathbf{\nabla\Gamma}^k =
-        -2\mathbf{A}^T[\mathbf{d}^o - \mathbf{d}(\mathbf{p}^k)] +
+        -2{\mathbf{A}^k}^T[\mathbf{d}^o - \mathbf{d}(\mathbf{p}^k)] +
         2\mu\mathbf{R}^T\mathbf{R}\mathbf{p}^k,
-    \label{eq:p3-gradient-regul}
+    \label{eq:moho-gradient-regul}
 \end{equation}
 
 \noindent and
 
 \begin{equation}
-    \mathbf{H}^k = 2\mathbf{A}^T\mathbf{A} + 2\mu\mathbf{R}^T\mathbf{R}.
-    \label{eq:p3-hessian-regul}
+    \mathbf{H}^k = 2{\mathbf{A}^k}^T{\mathbf{A}^k}
+                   + 2\mu\mathbf{R}^T\mathbf{R}.
+    \label{eq:moho-hessian-regul}
 \end{equation}
 
-\noindent The parameter updates for the regularized Gauss-Newton and Steepest
-Descent methods, respectively, then become
+At the $k$th iteration, the parameter perturbation vector
+$\mathbf{\Delta p}^k$ is obtained by solving the linear equation system
 
 \begin{equation}
-    \left[\mathbf{A}^T\mathbf{A} + \mu\mathbf{R}^T\mathbf{R}\right]
-    \mathbf{\Delta p} =
-        \mathbf{A}^T[\mathbf{d}^o - \mathbf{d}(\mathbf{p}^k)] -
-        \mu\mathbf{R}^T\mathbf{R}\mathbf{p}^k,
-    \label{eq:p3-gaussnewton-regul}
+    \left[{\mathbf{A}^k}^T{\mathbf{A}^k} + \mu\mathbf{R}^T\mathbf{R}\right]
+    \mathbf{\Delta p}^k =
+    {\mathbf{A}^k}^T[\mathbf{d}^o - \mathbf{d}(\mathbf{p}^k)] -
+    \mu\mathbf{R}^T\mathbf{R}\mathbf{p}^k.
+    \label{eq:moho-gaussnewton-regul}
 \end{equation}
 
-\noindent and
-
-\begin{equation}
-    \mathbf{\Delta p} =
-        \mathbf{A}^T[\mathbf{d}^o - \mathbf{d}(\mathbf{p}^k)] -
-        \mu\mathbf{R}^T\mathbf{R}\mathbf{p}^k,
-    \label{eq:p3-steepest-regul}
-\end{equation}
-
-Producing the regularized solution using the above equations is computationally
+Estimating the Moho depths using the above equations is computationally
 costly because of two main factors:
 (1) the evaluation and storage of the dense $N \times M$ Jacobian matrix
-$\mathbf{A}$
+${\mathbf{A}^k}$
 and (2) the solution of the resulting $M \times M$ equation system
 (not required for Steepest Descent).
-In practice, the derivatives in the Jacobian (Eq.~\ref{eq:p3-jacobian})
+In practice, the derivatives in the Jacobian (Eq.~\ref{eq:moho-jacobian})
 are often calculated through a first-order finite-difference approximation.
-Thus, evaluating $\mathbf{A}$ requires $2\times M \times N$ forward modeling
+Thus, evaluating ${\mathbf{A}^k}$ requires $2\times M \times N$ forward modeling
 operations for each iteration of the gradient descent algorithm.
-These computations are performed for each iteration of the optimization.
+These computations are performed for each iteration of the optimization
+of the goal function $\Gamma(\mathbf{p})$.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Bott's method}
 
-\citet{bott1960} developed an efficient method to determined the basement
-relief of a sedimentary basin from gravity observations.
+\citet{bott1960} developed an efficient method to determined the depth of the
+basement of a sedimentary basin from gravity observations.
 The method requires data on a regular grid of $N_x \times N_y = N$
 observations.
 The basement relief is then discretized into an equal grid of $M_x \times
 M_y = M$ elements with $M_x = N_x$ and $M_y = N_y$.
-Bott's iterative method starts with an initial estimate of the basement relief
-$\mathbf{p}^0$ equal to the null vector and updates the estimate using the formula
+Bott's iterative method starts with an initial approximation of the basement
+depths $\mathbf{p}^0$ equal to the null vector.
+The method updates the approximation by calculating a parameter perturbation
+vector $\mathbf{\Delta p}^k$ using the formula
 
 \begin{equation}
-    \mathbf{\Delta p} = \dfrac{\mathbf{d}^o - \mathbf{d}(\mathbf{p}^k)}{2\pi G \Delta \rho},
-    \label{eq:p3-bott}
+    \mathbf{\Delta p}^k =
+        \dfrac{\mathbf{d}^o - \mathbf{d}(\mathbf{p}^k)}{2\pi G \Delta \rho},
+    \label{eq:moho-bott}
 \end{equation}
 
 \noindent
-in which $G$ is the gravitational constant and $\Delta \rho$ is the basin
-density contrast.
+in which $G$ is the gravitational constant and $\Delta \rho$ is the
+contrast between the density of the sediments and the reference density.
 The iterative process stops when the inversion residuals
-$\mathbf{r} = \mathbf{d}^o - \mathbf{d}(\mathbf{p}^k)$ fall below the assumed noise level
+$\mathbf{r}^k = \mathbf{d}^o - \mathbf{d}(\mathbf{p}^k)$ fall below the assumed noise level
 of the data.
 
 \citet{silva2014} showed that Bott's method can be formulated as
-a special case of the Gauss-Newton method (Eq.~\ref{eq:p3-gaussnewton})
-by setting the Jacobian matrix (Eq.~\ref{eq:p3-jacobian}) to
+a special case of the Gauss-Newton method (Eq.~\ref{eq:moho-gaussnewton})
+by setting the Jacobian matrix (Eq.~\ref{eq:moho-jacobian}) to
 
 \begin{equation}
     \mathbf{A} = 2\pi G \Delta \rho \mathbf{I},
-    \label{eq:p3-bott-gaussnewton}
+    \label{eq:moho-bott-gaussnewton}
 \end{equation}
 
 \noindent
-in which $\mathbf{I}$ is the identity matrix.
+where $\mathbf{I}$ is the identity matrix.
 In this framework,
 Bott's method uses a Bouguer plate approximation of the gravitational effect of
 the relief, $d_i = 2\pi G \Delta\rho z_i$.
@@ -494,19 +482,9 @@ $2\pi G \Delta \rho$, thus linearizing the Jacobian matrix.
 However, the non-linearity of the predicted data $\mathbf{d}(\mathbf{p}^k)$ is
 preserved.
 
-We propose that Bott's method can also be formulated as a special case of the
-Steepest Descent method (Eq.~\ref{eq:p3-steepest}) by setting the Jacobian matrix to
-
-\begin{equation}
-    \mathbf{A} = \dfrac{1}{4 \pi G \Delta \rho}\mathbf{I}.
-    \label{eq:p3-bott-steepest}
-\end{equation}
-
-\noindent
-In practice, both formulations lead to Eq.~\ref{eq:p3-bott}.
 One of the advantages of Bott's method over the traditional Gauss-Newton or
-Steepest Descent is eliminating the computation and storage of the dense
-Jacobian matrix $\mathbf{A}$.
+Steepest Descent is the elimination of the computation and storage of the dense
+Jacobian matrix $\mathbf{A}^k$.
 Furthermore, Bott's method also does not require the solution of equation
 systems.
 However, a disadvantage of Bott's method is that it suffers from instability
@@ -519,56 +497,78 @@ the inversion to the unstable estimate, as in \citet{silva2014}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Regularized Bott's method in spherical coordinates}
 
-We propose a regularized version of Bott's method to invert for the relief of
-the anomalous Moho in spherical coordinates.
+We propose a regularized version of Bott's method to invert gravity data for
+estimating the depth of the Moho in spherical coordinates.
 To adapt Bott's method to spherical coordinates,
 we replace the right-rectangular prisms in the forward modeling
-($\mathbf{d}(\mathbf{p}^k)$ in Eq.~\ref{eq:p3-bott})
+($\mathbf{d}(\mathbf{p}^k)$ in Eq.~\ref{eq:moho-bott})
 with tesseroids.
 The tesseroid forward modeling uses the adaptive discretization algorithm
 of \citet{uieda2016} to achieve accurate results.
 Furthermore, our formulation maintains the regularized solution
-for the Gauss-Newton method (Eq.~\ref{eq:p3-gaussnewton-regul})
+for the Gauss-Newton method (Eq.~\ref{eq:moho-gaussnewton-regul})
 but replaces the full Jacobian matrix with the Bouguer plate approximation
-(Eq.~\ref{eq:p3-bott-gaussnewton}).
-This linearizes the Jacobian matrix and reduces it to a sparse diagonal matrix,
-thus eliminating the cost of computing and storing $\mathbf{A}$.
+(Eq.~\ref{eq:moho-bott-gaussnewton}).
+Here, the Jacobian matrix is a diagonal matrix whose elements are invariant
+along successive iterations.
+Using this approximation eliminates the cost of computing and storing
+the full Jacobian matrix $\mathbf{A}^k$ at each iteration
+(Eq.~\ref{eq:moho-jacobian}).
 Matrix arithmetic operations can be performed efficiently by taking advantage
 of the sparse nature of matrices $\mathbf{A}$ and $\mathbf{R}$
-(respectively, Eq.~\ref{eq:p3-bott-gaussnewton} and \ref{eq:p3-regul}).
+(respectively, Eq.~\ref{eq:moho-bott-gaussnewton} and \ref{eq:moho-regul}).
 The same is true for solving the equation system in the Gauss-Newton method
-(Eq.~\ref{eq:p3-gaussnewton-regul}).
+(Eq.~\ref{eq:moho-gaussnewton-regul}).
 However, the computational cost of forward modeling is still present.
 Particularly, forward modeling using tesseroids is more computationally
 intensive than using right-rectangular prisms
 because of the numerical integration and adaptive discretization
 \citep{uieda2016}.
-Our benchmarks suggest that
-sparse matrix multiplications and solving the sparse linear system
-in Eq.~\ref{eq:p3-gaussnewton-regul}
-account for less than 0.1\%
-of the computation time of a single inversion
-(see section~\ref{sec:p3-simple-synthetic} and Table~\ref{profiling}).
-Hence, by employing the use of sparse matrices,
-our formulation retains the efficiency of Bott's method
-while stabilizing the solution through the well established formalism of
-Tikhonov regularization.
+We show later in this article that sparse matrix multiplications and solving
+the sparse linear system in Eq.~\ref{eq:moho-gaussnewton-regul} account for less
+than 0.1\% of the computation time required for a single inversion.
+Hence, by employing the use of sparse matrices, our formulation retains the
+efficiency of Bott's method while stabilizing the solution through the well
+established formalism of Tikhonov regularization.
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Estimating the regularization parameter}
+\subsection{Estimating the inversion hyper-parameters}
+
+Parameters that influence the inversion result but are not estimated directly
+in the inversion are known as hyper-parameters.
+In the case of our regularized Moho depth inversion, the hyper-parameters are
+the regularization parameter $\mu$ (Eq.~\ref{eq:moho-goalfunction}),
+the Moho density-contrast $\Delta \rho$ (Eq.~\ref{eq:moho-bott-gaussnewton}),
+and the depth of the Normal Earth Moho, or reference level, $z_{ref}$
+(Fig.~\ref{fig:moho-anomalysketch}b).
+
+We estimate these hyper-parameters in two steps.
+First, we assume fixed values for
+$z_{ref}$ and $\Delta\rho$ and perform a cross-validation procedure
+\citep{hansen1992} to estimate an optimal value for $\mu$.
+Our investigations suggest that the optimal value of $\mu$ does not depend on
+the particular values of $z_{ref}$ and $\Delta\rho$ used.
+Second, we use the estimated $\mu$ to perform a second cross-validation
+procedure to estimate $z_{ref}$ and $\Delta\rho$.
+The outcome of both cross-validations is not only the values of the three
+hyper-parameters but the final estimated Moho depths.
+
+
+
+\subsubsection{Estimating the regularization parameter}
 
 \begin{figure}
     \centering
-    \includegraphics{figures/paper-moho/cv-grid-separation}
+    \includegraphics[width=0.8\textwidth]{figures/paper-moho/cv-grid-separation}
     \caption{Sketch of a data grid separated into
-        the training (white dots with black outlines)
+        the training (open circles)
         and testing (black dots) data sets.
         The training data set is still displayed on a regular grid
         but with twice the grid spacing
         of the original data grid.}
-    \label{fig:p3-grid_separation}
+    \label{fig:moho-grid_separation}
 \end{figure}
 
 The regularization parameter $\mu$ controls how much smoothness is applied to
@@ -585,27 +585,32 @@ and a testing set $\mathbf{d}^o_{test}$.
 The training set is used in the inversion
 while the testing set is kept back
 and used to judge the quality of the chosen value of $\mu$.
-For a value of the regularization parameter $\mu_k$,
-the training set is inverted using $\mu_k$
-to obtain an estimate $\mathbf{\hat{p}}^k$.
+For a value of the regularization parameter $\mu_n$,
+the training set is inverted using $\mu_n$
+to obtain an estimate $\mathbf{\hat{p}}^n$.
 This estimate is used to calculate predicted data
 on the same points as the testing set
 via forward modeling
-($\mathbf{d}_{test}^k = \mathbf{f}(\mathbf{\hat{p}}^k$)).
-The metric chosen to evaluate $\mu_k$ is
+
+\begin{equation}
+    \mathbf{d}_{test}^n = \mathbf{f}(\mathbf{\hat{p}}^n).
+    \label{eq:moho-predicted_testing}
+\end{equation}
+
+The metric chosen to evaluate $\mu_n$ is
 the mean square error (MSE) of the misfit
 between the observed and predicted testing data sets,
 
 \begin{equation}
-    MSE_k = \dfrac{\|\mathbf{d}^o_{test} - \mathbf{d}^k_{test}\|^2}{N_{test}},
-    \label{eq:p3-msemu}
+    MSE_n = \dfrac{\|\mathbf{d}^o_{test} - \mathbf{d}^n_{test}\|^2}{N_{test}},
+    \label{eq:moho-msemu}
 \end{equation}
 
 \noindent
 in which $N_{test}$ is the number of data in the testing set.
 The optimal value of $\mu$ will be the one that minimizes the MSE,
 i.e. the one that best predicts the testing data.
-We emphasize that the inversion is performed only on the training data set.
+We emphasize that the inversion is performed on the training data set only.
 
 The algorithm for the hold-out cross-validation is summarized as follows:
 
@@ -613,16 +618,16 @@ The algorithm for the hold-out cross-validation is summarized as follows:
     \item Divide the observed data into
         the training ($\mathbf{d}^o_{inv}$)
         and testing ($\mathbf{d}^o_{test}$) sets.
-    \item For each $\mu_k \in [\mu_1, \mu_2, \ldots, \mu_{N_{\mu}}]$:
+    \item For each $\mu_n \in [\mu_1, \mu_2, \ldots, \mu_{N_{\mu}}]$:
     \begin{enumerate}
-        \item Estimate $\mathbf{\hat{p}}^k$ by inverting the training set
+        \item Estimate $\mathbf{\hat{p}}^n$ by inverting the training set
             $\mathbf{d}^o_{inv}$.
-        \item Use $\mathbf{\hat{p}}^k$ to calculate the predicted testing set
-            $\mathbf{d}^k_{test}$.
-        \item Calculate the mean square error $MSE_k$ using Eq.~\ref{eq:p3-msemu}.
+        \item Use $\mathbf{\hat{p}}^n$ to calculate the predicted testing set
+            $\mathbf{d}^n_{test}$ using Eq.~\ref{eq:moho-predicted_testing}.
+        \item Calculate the mean square error $MSE_n$ using Eq.~\ref{eq:moho-msemu}.
     \end{enumerate}
-    \item The final solution is the $\mathbf{\hat{p}}^k$ corresponding to the
-        smallest $MSE_k$.
+    \item The final solution is the $\mathbf{\hat{p}}^n$ corresponding to the
+        smallest $MSE_n$.
 \end{enumerate}
 
 The separation of the training and testing data sets is commonly done by taking
@@ -632,10 +637,10 @@ Bott's method requires data on a regular grid as well as having model elements
 directly below each data point.
 Thus, we take as our training set the points from the observed data grid that
 fall on a similar grid but with twice the grid spacing
-(white dots with black outlines in Fig.~\ref{fig:p3-grid_separation}).
+(open circles in Fig.~\ref{fig:moho-grid_separation}).
 All other points from the original data grid
 make up the testing data set
-(black dots in Fig.~\ref{fig:p3-grid_separation}).
+(black dots in Fig.~\ref{fig:moho-grid_separation}).
 This separation will lead to
 a testing data set with more points than the training data set.
 A way to balance this loss of data in the inversion
@@ -645,8 +650,7 @@ or from a spherical harmonic model.
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Estimating $z_{ref}$ and $\Delta\rho$}
+\subsubsection{Estimating $z_{ref}$ and $\Delta\rho$}
 
 The depth of the Normal Earth Moho ($z_{ref}$)
 and the density-contrast of the anomalous Moho ($\Delta\rho$)
@@ -667,7 +671,7 @@ experiments.
 
 Let $\mathbf{z}_s^o$ be a vector of $N_s$ known Moho depths.
 We use the mean square error (MSE)
-as a measure of how well a given inversion output $\mathbf{\hat{p}}^k$
+as a measure of how well a given inversion output $\mathbf{\hat{p}}^{l,m}$
 fits the know depths.
 The optimal values of $z_{ref}$ and $\Delta\rho$
 are the ones that best fit the independent known Moho depths
@@ -675,13 +679,13 @@ are the ones that best fit the independent known Moho depths
 However, the points do not necessarily coincide
 with the model elements of the inversion.
 Before computing the MSE,
-we interpolate $\mathbf{\hat{p}}^k$ on the known points
-to obtain the predicted depths $\mathbf{z}_s^k$.
+we interpolate $\mathbf{\hat{p}}^{l,m}$ on the known points
+to obtain the predicted depths $\mathbf{z}_s^{l,m}$.
 The MSE is defined as
 
 \begin{equation}
-    MSE = \dfrac{\|\mathbf{z}^o_s - \mathbf{z}^k_{s}\|^2}{N_s}.
-    \label{eq:p3-msehyper}
+    MSE = \dfrac{\|\mathbf{z}^o_s - \mathbf{z}^{l,m}_{s}\|^2}{N_s}.
+    \label{eq:moho-msehyper}
 \end{equation}
 
 The algorithm for estimating $z_{ref}$ and $\Delta\rho$ is:
@@ -700,7 +704,7 @@ The algorithm for estimating $z_{ref}$ and $\Delta\rho$ is:
             on the known points to obtain the predicted depths
             $\mathbf{z}_s^{l,m}$.
         \item Calculate the MSE between $\mathbf{z}_s^o$ and
-            $\mathbf{z}_s^{l,m}$ using Eq.~\ref{eq:p3-msehyper}.
+            $\mathbf{z}_s^{l,m}$ using Eq.~\ref{eq:moho-msehyper}.
     \end{enumerate}
     \item The final solution is the $\mathbf{\hat{p}}^{l,m}$ corresponding to
         the smallest MSE.
@@ -717,7 +721,7 @@ though in a less formalized way.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Software implementation}\label{sec:p3-software}
+\subsection{Software implementation}\label{sec:software}
 
 The inversion method proposed here is implemented in the Python programming
 language.
@@ -735,7 +739,7 @@ for geophysics specific tasks,
 particularly for forward modeling using tesseroids.
 We use the scipy.sparse package for sparse matrix arithmetic and linear
 algebra.
-The sparse linear system in Eq.~\ref{eq:p3-gaussnewton-regul}
+The sparse linear system in Eq.~\ref{eq:moho-gaussnewton-regul}
 is solved using the conjugate gradient method implemented in scipy.sparse.
 
 The computational experiments
@@ -763,7 +767,7 @@ publication}).
 
 We test and illustrate the proposed inversion method
 by applying it to two noise-corrupted synthetic data sets.
-The first data set is generated by a simple Moho model simulating the transition
+The first one is generated by a simple Moho model simulating the transition
 from a thicker continental crust to a thinner oceanic crust.
 This application uses cross-validation to estimate the regularizing parameter
 ($\mu$) while assuming that the anomalous Moho density-contrast ($\Delta\rho$)
@@ -780,11 +784,11 @@ with more fidelity the real data application.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Simple model}\label{sec:p3-simple-synthetic}
+\subsection{Simple model}\label{sec:simple-synthetic}
 
 \begin{figure}
     \centering
-    \includegraphics{figures/paper-moho/synthetic-simple-data}
+    \includegraphics[width=0.8\textwidth]{figures/paper-moho/synthetic-simple-data}
     \caption{
         A simple Moho model made of tesseroids for synthetic data application.
         (a) The Moho depth of the model in kilometers.
@@ -796,7 +800,7 @@ with more fidelity the real data application.
         (b) Noise-corrupted synthetic gravity data generated from the model
         shown in (a).
     }
-    \label{fig:p3-simple-data}
+    \label{fig:moho-simple-data}
 \end{figure}
 
 \begin{figure*}
@@ -805,24 +809,22 @@ with more fidelity the real data application.
     \caption{
         Results from the inversion of the simple synthetic data.
         (a) The estimated Moho depth.
-        (b) The difference between the true model depths
-        and the estimated depths.
-        (c) The inversion residuals (observed data minus
-        the data predicted by the estimate).
-        (d) Histogram of the residuals. Also shown are the calculated
-        mean and standard deviation (std) of the residuals.
-        Note that the data were contaminated with normally distributed
-        pseudo-random noise with zero mean and 5 mGal standard deviation.
+        (b) The Moho depth residuals (difference between the true and estimated
+        Moho depths).
+        (c) The gravity residuals (difference between the observed and
+        predicted gravity data).
+        (d) Histogram of the gravity residuals shown in c, with the calculated
+        mean and standard deviation (std) of the residuals in mGal.
         (e) Cross-validation curve used to determine the optimal regularization
-        parameter (Eq.~\ref{eq:p3-goalfunction}).
+        parameter (Eq.~\ref{eq:moho-goalfunction}).
         Both axis are in logarithmic scale.
-        The minimum Mean Square Error (Eq.~\ref{eq:p3-msemu}) is found at
+        The minimum Mean Square Error (Eq.~\ref{eq:moho-msemu}) is found at
         $\mu = 0.00046$ (red triangle).
-        (f) Goal function value (Eq.~\ref{eq:p3-goalfunction}) per Gauss-Newton
+        (f) Goal function value (Eq.~\ref{eq:moho-goalfunction}) per Gauss-Newton
         iteration showing the convergence of the gradient descent.
         The y-axis is in logarithmic scale.
     }
-    \label{fig:p3-simple-results}
+    \label{fig:moho-simple-results}
 \end{figure*}
 
 We simulate the transition from a continental-type Moho to an oceanic-type Moho
@@ -830,9 +832,10 @@ using a model composed of $M_{lat} \times M_{lon} = 40 \times 50$ grid of
 juxtaposed tesseroids (a total of $M = 2000$ model elements).
 The anomalous Moho density-contrast is $\Delta\rho = 400\ kg/m^3$
 and the Normal Earth Moho depth is $z_{ref} = 30\ km$.
-Fig.~\ref{fig:p3-simple-data}a shows the model Moho depths,
-where each pixel in the pseudo-color image corresponds to
-a tesseroid of the model.
+Fig.~\ref{fig:moho-simple-data}a shows the model Moho depths where we can clearly
+see an eastward crustal thinning.
+In Fig.~\ref{fig:moho-simple-data}a, each pixel in the pseudo-color image
+corresponds to a tesseroid of the model.
 
 The synthetic data were forward modeled on a regular grid of
 $N_{lat} \times N_{lon} = 79 \times 99$ points
@@ -840,14 +843,16 @@ $N_{lat} \times N_{lon} = 79 \times 99$ points
 at a constant height of 50 km.
 The data were contaminated with pseudo-random noise
 sampled from a normal distribution with zero mean and 5 mGal standard deviation.
-Fig.~\ref{fig:p3-simple-data}b shows the noise-corrupted full synthetic data set.
+Fig.~\ref{fig:moho-simple-data}b shows the noise-corrupted full synthetic data set
+exhibiting an eastward increase due to the simulated eastward
+crustal thinning shown in Fig.~\ref{fig:moho-simple-data}a.
 The data grid spacing is half the grid spacing of the tesseroid model
 so that, when separating the training and testing data sets
-(Fig.~\ref{fig:p3-grid_separation}),
+(Fig.~\ref{fig:moho-grid_separation}),
 the training data set points will fall directly above each model element.
 
 We separated the synthetic data into training and testing data sets
-following Fig.~\ref{fig:p3-grid_separation}.
+following Fig.~\ref{fig:moho-grid_separation}.
 The training data set is a regular grid of
 $N_{lat} \times N_{lon} = 40 \times 50$ points
 (a total of $N_{train} = 2000$).
@@ -862,32 +867,31 @@ For all inversions, the initial Moho depth estimate
 used to start the Gauss-Newton optimization
 was set to 60 km depth for all inversion parameters.
 Furthermore, $z_{ref}$ and $\Delta\rho$ are set to their respective true values.
-Finally, we computed the mean square error (MSE, Eq.~\ref{eq:p3-msemu})
+Finally, we computed the mean square error (MSE, Eq.~\ref{eq:moho-msemu})
 for each estimate and chose as the final estimated Moho model
 the one that minimizes the MSE.
 
-Fig.~\ref{fig:p3-simple-results} summarizes the inversion results.
-Fig.~\ref{fig:p3-simple-results}a shows the final estimated Moho depth
+Fig.~\ref{fig:moho-simple-results}a shows the final estimated Moho depth
 after cross-validation.
 The recovered model is smooth, indicating that the cross-validation procedure
 was effective in estimating an optimal regularization parameter.
-Fig.~\ref{fig:p3-simple-results}b shows difference between the true Moho depth
-(Fig.~\ref{fig:p3-simple-data}a) and the estimated Moho depth.
+Fig.~\ref{fig:moho-simple-results}b shows difference between the true Moho depth
+(Fig.~\ref{fig:moho-simple-data}a) and the estimated Moho depth.
 The differences appear to be semi-randomly distributed with a maximum
 coinciding with a short-wavelength feature in the true model.
 The maximum and minimum differences are approximately
 2.19 and -2.13 km, respectively.
-Fig.~\ref{fig:p3-simple-results}c shows inversion residuals (difference between
-the observed and predicted data), in mGal.
+Fig.~\ref{fig:moho-simple-results}c shows inversion residuals, defined as the
+difference between the observed and predicted data (in mGal).
 The largest residual (in absolute value) coincides with the largest difference
 between the true model and the estimate.
 The inversion residuals are normally distributed,
-as shown in Fig.~\ref{fig:p3-simple-results}d,
+as shown in Fig.~\ref{fig:moho-simple-results}d,
 with 0.02 mGal mean and a standard deviation of 3.63 mGal.
-The cross-validation curve in Fig.~\ref{fig:p3-simple-results}e
+The cross-validation curve in Fig.~\ref{fig:moho-simple-results}e
 shows a clear minimum MSE at $\mu = 0.00046$
 (indicated by the red triangle).
-Fig.~\ref{fig:p3-simple-results}f shows the convergence of
+Fig.~\ref{fig:moho-simple-results}f shows the convergence of
 the Gauss-Newton optimization in eight iterations.
 
 We also investigated the computation time spent in each section of the inversion
@@ -898,41 +902,25 @@ We ran the profiler on a single inversion of the training data set
 using the estimated regularization parameter.
 We tracked the total time spent inside each of the three functions
 that represent the largest computational bottlenecks of the inversion:
-solving the linear system in Eq.~\ref{eq:p3-gaussnewton-regul}
+solving the linear system in Eq.~\ref{eq:moho-gaussnewton-regul}
 using the conjugate gradient method,
 performing the dot products required to compute
-the Hessian matrix (Eq.~\ref{eq:p3-hessian-regul})
-and the gradient vector (Eq.~\ref{eq:p3-gradient-regul}),
-and forward modeling to calculate the predicted data (Eq.~\ref{eq:p3-forward}).
+the Hessian matrix (Eq.~\ref{eq:moho-hessian-regul})
+and the gradient vector (Eq.~\ref{eq:moho-gradient-regul}),
+and forward modeling to calculate the predicted data (Eq.~\ref{eq:moho-forward}).
 The profiling results presented in Table~\ref{profiling}
 show that the time spent on forward modeling accounts for approximately
 99.8\% of the total computation time.
 
 
-\begin{table}
-    \centering
-    \caption{
-        Total time spent on each function during a single inversion of
-        simple synthetic data.
-        The inversion was performed on a laptop computer with a
-        Intel(R) Core(TM) i7-3612QM CPU @ 2.10GHz processor.
-        The total time for the inversion was 42.133 seconds.
-    }
-    \label{profiling}
-    \begin{tabular}{lcc}
-        Function description & Time & Percentage of total time\\
-        \hline
-        Sparse conjugate gradient & 0.021 s & 0.050\%\\
-        Sparse dot product & 0.007 s & 0.017\%\\
-        Tesseroid forward modeling & 42.059 s & 99.824\%\\
-        \hline
-    \end{tabular}
-\end{table}
+% Insert the profiling results table
+\input{profiling.tex}
+
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Model based on CRUST1.0}\label{sec:p3-crust1}
+\subsection{Model based on CRUST1.0}\label{sec:crust1}
 
 \begin{figure*}
     \centering
@@ -946,11 +934,11 @@ show that the time spent on forward modeling accounts for approximately
         Each pixel in the pseudo-color image corresponds to a tesseroid of the
         model.
         (b) Noise-corrupted synthetic gravity data generated from the model.
-        (c) Synthetic seismic data simulating point estimates of Moho depth.
-        The point estimates were obtained by interpolating
-        the Moho depth in (a).
+        (c) Simulated points where the Moho depths are known from seismological
+        estimates (color dots).  Here, these point were obtained by
+        interpolating the Moho depth in (a).
     }
-    \label{fig:p3-crust1-data}
+    \label{fig:moho-crust1-data}
 \end{figure*}
 
 \begin{figure*}
@@ -959,28 +947,28 @@ show that the time spent on forward modeling accounts for approximately
     \caption{
         Inversion results from the CRUST1.0 synthetic data.
         (a) Cross-validation curve used to determine
-        the regularization parameter (Eq.~\ref{eq:p3-goalfunction}).
-        The minimum Mean Square Error (Eq.~\ref{eq:p3-msemu}) is found at
+        the regularization parameter (Eq.~\ref{eq:moho-goalfunction}).
+        The minimum Mean Square Error (Eq.~\ref{eq:moho-msemu}) is found at
         $\mu = 0.0001$ (red triangle).
         (b) Cross-validation results used to determine
         the reference level ($z_{ref}$) and the density-contrast ($\Delta\rho$).
         The colored contours represent
-        the Mean Square Error (Eq.~\ref{eq:p3-msehyper}) in $km^2$.
+        the Mean Square Error (Eq.~\ref{eq:moho-msehyper}) in $km^2$.
         The minimum (red triangle) is found at $z_{ref} = 30\ km$
         and $\Delta\rho = 350\ kg/m^3$.
         (c) The estimated Moho depth.
         (d) Difference between the CRUST1.0 model depths
-        (Fig.~\ref{fig:p3-crust1-data}a)
+        (Fig.~\ref{fig:moho-crust1-data}a)
         and the estimated depths.
         (e) Histogram of the inversion residuals
         (observed minus predicted data).
         (f) Histogram of the differences between
-        the synthetic seismic observations (Fig.~\ref{fig:p3-crust1-data}c)
+        the synthetic seismic observations (Fig.~\ref{fig:moho-crust1-data}c)
         and the estimated depths.
         (g) The inversion residuals.
         (h) Difference between the seismic and the estimated depths.
     }
-    \label{fig:p3-crust1-results}
+    \label{fig:moho-crust1-results}
 \end{figure*}
 
 
@@ -989,24 +977,24 @@ using Moho depth information extracted from the CRUST1.0 model
 \citep{laske2013}.
 We construct a tesseroid model with
 $M_{lat} \times M_{lon} = 80 \times 60$ juxtaposed elements, 4800 in total,
-using the Moho depths shown in Fig.~\ref{fig:p3-crust1-data}a.
+using the Moho depths shown in Fig.~\ref{fig:moho-crust1-data}a.
 In our model, the Normal Earth Moho is $z_{ref} = 30\ km$ and
 the density-contrast is $\Delta\rho = 350\ kg/m^3$.
 We produce the synthetic data at a constant height of 50 km
 and on a regular grid of $N_{lat} \times N_{lon} = 159 \times 119$ points
 (a total of 18921 observations).
 We contaminate the synthetic data with normally distributed pseudo-random noise
-with zero mean and 5 mGal standard deviation (Fig.~\ref{fig:p3-crust1-data}b).
+with zero mean and 5 mGal standard deviation (Fig.~\ref{fig:moho-crust1-data}b).
 
 The cross-validation procedure to determine $\Delta\rho$ and $z_{ref}$
 requires knowledge of the Moho depth at certain points
-($\mathbf{z}_s^o$ in Eq.~\ref{eq:p3-msehyper}),
+($\mathbf{z}_s^o$ in Eq.~\ref{eq:moho-msehyper}),
 usually from seismic experiments.
 Thus, we must also generate synthetic seismic data about the Moho depth.
 We produce such data by interpolating the Moho depth shown in
-Fig.~\ref{fig:p3-crust1-data}a on the same geographic coordinates
-as the 937 points from the \citet{assumpcao2013a} data set.
-The resulting synthetic seismic data is shown in Fig.~\ref{fig:p3-crust1-data}c.
+Fig.~\ref{fig:moho-crust1-data}a on the same 937 geographic coordinates
+pinpointed in the data set of \citet{assumpcao2013a}.
+The resulting synthetic seismic data is shown in Fig.~\ref{fig:moho-crust1-data}c.
 
 We perform the cross-validation procedures in two parts.
 First, we run the cross-validation to estimate
@@ -1016,25 +1004,23 @@ The starting estimate for all inversions is
 For this cross-validation,
 we keep $z_{ref}$ and $\Delta\rho$ fixed to
 $20\ km$ and $500\ kg/m^3$, respectively.
-Our investigations suggest that the outcome of this round of cross-validation
-does not depend on the particular values of $z_{ref}$ and $\Delta\rho$ used.
 Second, we use the estimated $\mu$ to run the cross-validation
 to estimate $z_{ref}$ and $\Delta\rho$,
 thus obtaining the final estimated Moho depths.
-Fig.~\ref{fig:p3-crust1-results} summarizes the results
+Fig.~\ref{fig:moho-crust1-results} summarizes the results
 from both cross-validation runs and the final inversion results.
 
 For the first cross-validation,
-we separate the synthetic data (Fig.~\ref{fig:p3-grid_separation}) into
+we separate the synthetic data (Fig.~\ref{fig:moho-grid_separation}) into
 a training set with twice the grid spacing of the original data
 ($N_{lat} \times N_{lon} = 80 \times 60$)
 and a testing set with 14,121 observations.
 We run the inversion for 16 different values of $\mu$
 equally spaced in a logarithmic scale between $10^{-7}$ and $10^{-2}$.
-For each of the 16 estimates we compute the MSE (Eq.~\ref{eq:p3-msemu}),
-shown in Fig.~\ref{fig:p3-crust1-results}a as function of $\mu$.
+For each of the 16 estimates we compute the MSE (Eq.~\ref{eq:moho-msemu}),
+shown in Fig.~\ref{fig:moho-crust1-results}a as function of $\mu$.
 The optimal regularization parameter that minimizes the MSE is $\mu = 10^{-4}$
-(indicated by the red triangle).
+(red triangle in Fig.~\ref{fig:moho-crust1-results}a).
 
 In the second cross-validation,
 we use the estimated value of $\mu$ in all inversions.
@@ -1043,41 +1029,41 @@ and seven values of $\Delta\rho$ from 200 to 500 $kg/m^3$
 with 50 $kg/m^3$ intervals.
 We run the inversion for every combination of $z_{ref}$ and $\Delta\rho$,
 totaling 49 inversions.
-Finally, we calculate the Mean Square Error (Eq.~\ref{eq:p3-msehyper})
+Finally, we calculate the Mean Square Error (Eq.~\ref{eq:moho-msehyper})
 for each of the 49 estimates
 and choose the values of $z_{ref}$ and $\Delta\rho$ that minimize the MSE.
-Fig.~\ref{fig:p3-crust1-results}b
+Fig.~\ref{fig:moho-crust1-results}b
 shows a colored-contour map of the MSE
 with a minimum (marked by the red triangle)
 at $z_{ref} = 30\ km$ and $\Delta\rho = 350\ kg/m^3$.
 
-Fig.~\ref{fig:p3-crust1-results}c shows the final solution after both
+Fig.~\ref{fig:moho-crust1-results}c shows the final solution after both
 cross-validation procedures.
 The recovered model is smooth, indicating that the cross-validation procedure
 was effective in estimating an optimal regularization parameter.
-Fig.~\ref{fig:p3-crust1-results}d shows the difference between
-the true Moho depths (Fig.~\ref{fig:p3-crust1-data}a)
-and the estimated depths.
+Fig.~\ref{fig:moho-crust1-results}d shows the difference between
+the true Moho depths (Fig.~\ref{fig:moho-crust1-data}a)
+and the estimated depths (Fig.~\ref{fig:moho-crust1-results}c).
 The maximum and minimum differences are, respectively,
 9.8 and -8.2 km.
 The largest absolute differences are located along the central and northern
 Andes, where there is a sharp increase in the true Moho depth
-(Fig.~\ref{fig:p3-crust1-data}a).
+(Fig.~\ref{fig:moho-crust1-data}a).
 Positive differences (indicating a too shallow estimate)
 appear along the central portion of the Andes,
 flanked by regions of negative differences (indicating a too deep estimate)
 on the continental and Pacific sides.
-Figs.~\ref{fig:p3-crust1-results}e and g show the inversion residuals (difference
-between the observed and predicted data).
-The inversion residuals appear normally distributed,
+Figs.~\ref{fig:moho-crust1-results}e and g show the gravity residuals,
+defined as the difference between the observed and predicted gravity data.
+The residuals appear normally distributed,
 with 0.03 mGal mean and a standard deviation of 4.10 mGal.
-The residuals follow a similar, though reversed, pattern
-to the differences shown in Fig.~\ref{fig:p3-crust1-results}d.
+The gravity residuals follow a similar, though reversed, pattern
+to the differences shown in Fig.~\ref{fig:moho-crust1-results}d.
 The largest residuals (in absolute value) are along the Andes,
 with the central portion being dominated by negative residuals
 and flanked by positive residuals on both sides.
-Figs.~\ref{fig:p3-crust1-results}f and h show the differences between
-the synthetic seismic data (Fig.~\ref{fig:p3-crust1-data}c)
+Figs.~\ref{fig:moho-crust1-results}f and h show the differences between
+the synthetic seismic data (Fig.~\ref{fig:moho-crust1-data}c)
 and the estimated Moho depths.
 Once more, the largest differences are concentrated along the Andes,
 particularly in the central Andes and near Ecuador and Colombia.
@@ -1115,19 +1101,19 @@ the Moho.
     \caption{
         Gravity data for South America and the models used in the data
         corrections.
-        (a) The gravity disturbance (Eq.~\ref{eq:p3-disturbance}) calculated from
+        (a) The gravity disturbance (Eq.~\ref{eq:moho-disturbance}) calculated from
         the raw gravity data.
         (b) Topography from ETOPO1.
         (c) Gravitational attraction of the topography calculated
         at the observation height using tesseroids.
-        (d) The Bouguer disturbance (Eq.~\ref{eq:p3-bouguer}) obtained by
+        (d) The Bouguer disturbance (Eq.~\ref{eq:moho-bouguer}) obtained by
         subtracting (c) from (a).
         The upper (e), middle (f), and lower (g) sediment layer thicknesses
         from the CRUST1.0 model.
         (h) The total gravitational attraction of the sediment layers shown in
         (e), (f), and (g), calculated using tesseroids.
         }
-    \label{fig:p3-sam-corrections}
+    \label{fig:moho-sam-corrections}
 \end{figure*}
 
 \begin{figure*}
@@ -1137,12 +1123,12 @@ the Moho.
         Input data for the South American Moho inversion.
         (a) Sediment-free Bouguer disturbance for South America.
         Obtained by subtracting the total sediment gravitational effect
-        (Fig.~\ref{fig:p3-sam-corrections}h) from the Bouguer disturbance
-        (Fig.~\ref{fig:p3-sam-corrections}d).
+        (Fig.~\ref{fig:moho-sam-corrections}h) from the Bouguer disturbance
+        (Fig.~\ref{fig:moho-sam-corrections}d).
         (b) Seismological Moho depth estimates from
         \citet{assumpcao2013a}.
     }
-    \label{fig:p3-sam-data}
+    \label{fig:moho-sam-data}
 \end{figure*}
 
 
@@ -1156,24 +1142,24 @@ International Centre for Global Earth Models (ICGEM) web-service
 in the form of the complete gravity field
 on a regular grid with $0.2^\circ$ grid spacing at ellipsoidal height 50 km.
 We calculate the gravity disturbance
-($\delta(P)$ in Eq.~\ref{eq:p3-disturbance})
+($\delta(P)$ in Eq.~\ref{eq:moho-disturbance})
 by subtracting from the raw data
 the normal gravity of the WGS84 reference ellipsoid ($\gamma(P)$)
 using the formula of \citet{li2001a}.
-Fig.~\ref{fig:p3-sam-corrections}a show the calculated gravity disturbance of
+Fig.~\ref{fig:moho-sam-corrections}a show the calculated gravity disturbance of
 South America.
 
 We remove the gravitational effect of the topography
 from the gravity disturbance
 by modeling the ETOPO1 digital terrain model
 \citep[][ \url{http://dx.doi.org/10.7289/V5C8276M}]{amante2009}
-using tesseroids (Fig.~\ref{fig:p3-sam-corrections}b).
+using tesseroids (Fig.~\ref{fig:moho-sam-corrections}b).
 We used the standard densities of $2670\ kg/m^3$ for continents and
 $-1630\ kg/m^3$ for the oceans.
-Fig.~\ref{fig:p3-sam-corrections}c shows the calculated gravitational attraction
+Fig.~\ref{fig:moho-sam-corrections}c shows the calculated gravitational attraction
 of the topographic masses at 50 km height.
-Fig.~\ref{fig:p3-sam-corrections}d shows the Bouguer disturbance
-(Eq.~\ref{eq:p3-bouguer}) obtained after subtracting the topographic effect from
+Fig.~\ref{fig:moho-sam-corrections}d shows the Bouguer disturbance
+(Eq.~\ref{eq:moho-bouguer}) obtained after subtracting the topographic effect from
 the gravity disturbance.
 
 The effect of sedimentary basins is removed using
@@ -1181,20 +1167,20 @@ tesseroid models of the three sedimentary layers present in the CRUST1.0 model
 \citep[][ \url{http://igppweb.ucsd.edu/~gabi/rem.html}]{laske2013}.
 Each sedimentary layer model includes the density
 of each $1^\circ \times 1^\circ$ model cell.
-Figs.~\ref{fig:p3-sam-corrections}e-g show the thickness of the upper, middle, and
+Figs.~\ref{fig:moho-sam-corrections}e-g show the thickness of the upper, middle, and
 lower sedimentary layers, respectively.
 The density-contrasts of the tesseroid model is obtained by subtracting
 $2670\ kg/m^3$ from the density of each model element.
-Fig.~\ref{fig:p3-sam-corrections}h shows the combined gravitational attraction of
+Fig.~\ref{fig:moho-sam-corrections}h shows the combined gravitational attraction of
 the sedimentary basin tesseroid model.
 We subtract the total effect of sediments from the Bouguer disturbance in
-Fig.~\ref{fig:p3-sam-corrections}d to obtain
-the sediment-free Bouguer disturbance (Fig.~\ref{fig:p3-sam-data}a),
+Fig.~\ref{fig:moho-sam-corrections}d to obtain
+the sediment-free Bouguer disturbance (Fig.~\ref{fig:moho-sam-data}a),
 which will be used as input for the inversion.
 
-The seismic point estimates of Moho depth used in the cross-validation
-procedure are from the data set of \citet{assumpcao2013a}.
-The 937 data points in this data set are shown in Fig.~\ref{fig:p3-sam-data}b.
+Fig.~\ref{fig:moho-sam-data}b shows the 937 known Moho depths (colored dots) which
+were estimated from seismological data by \citet{assumpcao2013a}.
+This data set is used in the cross-validation procedure.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1202,27 +1188,27 @@ The 937 data points in this data set are shown in Fig.~\ref{fig:p3-sam-data}b.
 
 \begin{figure}
     \centering
-    \includegraphics{figures/paper-moho/south-america-cv}
+    \includegraphics[width=0.8\textwidth]{figures/paper-moho/south-america-cv}
     \caption{
         Cross-validation results for the South American Moho inversion.
         (a) Cross-validation to determine the regularization parameter $\mu$
-        (Eq.~\ref{eq:p3-goalfunction}).
-        The minimum Mean Square Error (Eq.~\ref{eq:p3-msemu}),
+        (Eq.~\ref{eq:moho-goalfunction}).
+        The minimum Mean Square Error (Eq.~\ref{eq:moho-msemu}),
         shown as a red triangle,
         corresponds to $\mu = 10^{-10}$.
         (b) Cross-validation to determine
         the reference level ($z_{ref}$) and the density-contrast ($\Delta\rho$).
         The colored contours represent
-        the Mean Square Error (Eq.~\ref{eq:p3-msehyper}).
+        the Mean Square Error (Eq.~\ref{eq:moho-msehyper}).
         The minimum (red triangle) is found at $z_{ref} = 35\ km$
         and $\Delta\rho = 400\ kg/m^3$.
     }
-    \label{fig:p3-sam-cv}
+    \label{fig:moho-sam-cv}
 \end{figure}
 
 
 
-As in the CRUST1.0 synthetic data test (section~\ref{sec:p3-crust1}),
+As in the CRUST1.0 synthetic data test (section~\ref{sec:crust1}),
 we perform the cross-validation in two parts.
 First, we run the cross-validation to estimate
 an optimal regularization parameter ($\mu$).
@@ -1235,8 +1221,8 @@ Second, we use the estimated $\mu$ to run the cross-validation
 to estimate $z_{ref}$ and $\Delta\rho$,
 thus obtaining the final estimated Moho depth model.
 
-We split the sediment-free gravity data into the training and testing data
-sets.
+We split the sediment-free gravity disturbance (Fig.~\ref{fig:moho-sam-data}a) into
+the training and testing data sets.
 The training data set is a regular grid with $0.4^\circ$ grid spacing
 (twice the spacing of the original data grid)
 and $N_{lat} \times N_{lon} = 201 \times 151$ grid points,
@@ -1244,7 +1230,7 @@ a total of 30,351 observations.
 The remaining 90,350 points compose the testing data set.
 We test 16 values of the regularization parameter ($\mu$)
 equally spaced on a logarithmic scale between $10^{-10}$ and $10^{-2}$.
-Fig.~\ref{fig:p3-sam-cv}a shows the Mean Square Error (MSE)
+Fig.~\ref{fig:moho-sam-cv}a shows the Mean Square Error (MSE)
 as a function of $\mu$.
 The minimum MSE is found at $\mu = 10^{-10}$, the lowest value of $\mu$ tested,
 suggesting that little or no regularization is required.
@@ -1252,12 +1238,12 @@ suggesting that little or no regularization is required.
 We proceed with the second cross-validation using $\mu = 10^{-10}$ in all
 inversions.
 We test all combinations of
-seven values of $z_{ref}$, from 20 to 35 km with 2.5 km intervals,
+seven values of $z_{ref}$, from 20 to 40 km with 2.5 km intervals,
 and seven values of $\Delta\rho$, from 200 to 500 $kg/m^3$
 with 50 $kg/m^3$ intervals.
-Fig.~\ref{fig:p3-sam-cv}b shows a map of the MSE
+Fig.~\ref{fig:moho-sam-cv}b shows a map of the MSE
 with respect to the \citet{assumpcao2013a} data set.
-The MSE has a well defined minimum, indicated by the red triangle,
+The MSE has a well-defined minimum, indicated by the red triangle,
 at $z_{ref} = 35\ km$ and $\Delta\rho = 400\ kg/m^3$.
 
 
@@ -1268,68 +1254,105 @@ at $z_{ref} = 35\ km$ and $\Delta\rho = 400\ kg/m^3$.
     \centering
     \includegraphics[width=\textwidth]{figures/paper-moho/south-america-moho}
     \caption{
-        Inversion results for the South American Moho.
-        (a) The estimated Moho depth of South America.
+        The estimated Moho depth of South America.
+        Dotted lines represent the boundaries between major geologic provinces
+        \citep[after][]{assumpcao2013a, goutorbe2015};
+        AD: Andean Province,
+        AFB: Andean foreland basins,
+        AM: Amazonas Basin,
+        BR: Brazilian Shield,
+        BO: Borborema province,
+        CH: Chaco Basin,
+        GB: Guyana Basin,
+        GU: Guyana Shield,
+        PB: Parnaíba Basin,
+        PC: Parecis Basin,
+        PR: Paraná Basin,
+        PT: Patagonia province,
+        SF: São Francisco Craton,
+        SM: Solimões Basin.
+        Solid orange lines mark the limits of the main lithospheric plates
+        \citep{bird2003a};
+        AF: Africa Plate,
+        AN: Antarctica Plate,
+        CA: Caribbean Plate,
+        CO: Cocos Plate,
+        SA: South America Plate,
+        SC: Scotia Plate,
+        NZ: Nazca Plate.
         The solid light grey line is the 35 km Moho depth contour.
-        (b) Inversion residuals (observed data in Fig.~\ref{fig:p3-sam-data}a
-        minus the data predicted by the estimate (a)).
-        (c) Differences between the seismological depths of
-        \citet{assumpcao2013a} and our gravity-derived estimate shown in (a).
-        The inset in (c) shows a histogram of the differences along with their
-        calculated mean and standard deviation (std).
     }
-    \label{fig:p3-sam-moho}
+    \label{fig:moho-sam-moho}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/paper-moho/south-america-residuals}
+    \caption{
+        Residuals for the estimated South American Moho depth in
+        Fig.~\ref{fig:moho-sam-moho}.
+        (a) Gravity residuals, defined as the difference between the observed data in Fig.~\ref{fig:moho-sam-data}a
+        and the data predicted by the estimate in Fig.~\ref{fig:moho-sam-moho}.
+        (b) Differences between the seismological depth estimates of
+        \citet{assumpcao2013a} and our gravity-derived Moho depth estimate.
+        The inset in b shows a histogram of the differences along with their
+        calculated mean and standard deviation (std).
+        Dotted lines mark the limits of major geologic provinces and
+        lithospheric plates.
+    }
+    \label{fig:moho-sam-residuals}
 \end{figure*}
 
 
 The final Moho depth model for South America is shown
-as a pseudo-color map in Fig.~\ref{fig:p3-sam-moho}a.
+as a pseudo-color map in Fig.~\ref{fig:moho-sam-moho}.
 The model is available in the online repository that accompanies
-this contribution (see section~\ref{sec:p3-software}).
+this contribution (see section~\ref{sec:software}).
 Each model element is a $0.4^\circ \times 0.4^\circ$ tesseroid,
 represented by the pixels in the pseudo-color map.
 
-Our model differs significantly from CRUST1.0 (Fig.~\ref{fig:p3-crust1-data}a)
+Our model differs significantly from CRUST1.0 (Fig.~\ref{fig:moho-crust1-data}a)
 but contains most of the large-scale features
 present in the GMSA12 gravity-derived model of \citet{vandermeijde2013}.
 The deepest Moho is along the central Andes, reaching depths upward of 70 km.
 The oceanic areas present the shallowest Moho, ranging approximately
 from 7.5 to 20 km.
-The Brazilian and Guiana shields have a deeper Moho (greater than 35 km),
-with the deepest portion in the area of the São Francisco craton.
-The Moho is shallower than 35 km along the western Amazon and Andean foreland
-regions, as well as along the Amazon river.
+The Brazilian and Guyana Shields have a deeper Moho (greater than 35 km),
+with the deepest portions in the area around the São Francisco Craton
+and the northern border of the Parecis Basin.
+The Moho is shallower than 35 km along the Guyana Basin, the Andean foreland
+basins, the Chaco Basin, and along the centers of the Solimões, Amazonas, and
+Paraná Basins.
 
-Fig.~\ref{fig:p3-sam-moho}b shows the inversion residuals
-(observed minus predicted data)
-and Fig.~\ref{fig:p3-sam-moho}c shows the differences between
-the seismic-derived depths of \citet{assumpcao2013a}
-(Fig.~\ref{fig:p3-sam-data}b) and the depths in our model.
-The differences range from approximately -23 to 23 km
-and have a mean of 1.18 km and a standard deviation of 6.84 km.
-The residuals and differences from seismic are smallest in the oceanic areas,
-southern Patagonia, and the eastern coast of the continent.
-The largest residuals are located along the Andes and correlate with the
-deepest Moho depths.
+Fig.~\ref{fig:moho-sam-residuals}a shows the gravity residuals,
+defined as the difference between the observed and predicted gravity data.
+Fig.~\ref{fig:moho-sam-residuals}b shows the differences between
+the seismic-derived Moho depths of \citet{assumpcao2013a}
+(Fig.~\ref{fig:moho-sam-data}b) and the depths of our gravity-derived model
+(Fig.~\ref{fig:moho-sam-moho}).
+The differences shown in Fig.~\ref{fig:moho-sam-residuals}b range from approximately
+-23 to 23 km and have a mean of 1.18 km and a standard deviation of 6.84 km.
+The gravity residuals and Moho depth differences from seismic are smallest in
+the oceanic areas, southern Patagonia, and the eastern coast of the continent.
+The largest gravity residuals are located along the Andes and correlate with
+the deepest Moho depths.
 These large residuals follow a pattern of a negative value in the center
-flanked by positive values to the East and West.
+flanked by positive values to the east and west.
 This same pattern is observed in the CRUST1.0 synthetic test results
-(Fig.~\ref{fig:p3-crust1-results}),
-suggesting that this is a byproduct of the inversion method, not the data.
-Likewise, larger residuals also appear to be associated with sharp variations
-in the estimated Moho depth.
+(Fig.~\ref{fig:moho-crust1-results}).
+In general, larger gravity residuals appear to be associated with sharp
+variations in the estimated Moho depth.
 Along the Andes, large differences with seismic data are correlated with the
-large inversion residuals.
-Conversely, this correlation is absent from the large differences seen in
-points around Venezuela.
+larger gravity residuals.
+Conversely, this correlation is absent from the large differences seen in the
+Guyana, Paraná, and the Solimões Basins.
 In the Borborema province, northeastern Brazil,
 our model slightly overestimates the Moho depth.
-On the other hand, our model underestimates the depths
-in the Amazon region and the Paraná basin.
-Particularly in the Amazon basin,
-where our model predicts a Moho depth of approximately 30 km,
-the residuals and the differences with the seismic data are larger than in the
-Paraná basin.
+On the other hand, our model underestimates the Moho depths in the Amazonas,
+Solimões, and Paraná Basins.
+Particularly in the Amazonas and Solimões Basins, where our model predicts a
+Moho depth of approximately 30 km, the differences with the seismological
+estimates can reach 10 km or more.
 
 
 
@@ -1352,12 +1375,12 @@ recover a smooth Moho relief with a homogeneous density-contrast.
 The inversion was not able to fully recover the shortest wavelength feature in
 the model, possibly due to the smoothness constraints which tends to soften
 high-frequency (sharp) variations.
-The cross-validation Mean Square Error curve in Fig.~\ref{fig:p3-simple-results}e
+The cross-validation Mean Square Error curve in Fig.~\ref{fig:moho-simple-results}e
 has a well-defined minimum, indicating a value of the regularization parameter
 ($\mu$) whose corresponding estimate best predicts data that were not included
 in the inversion.
-Using this value of $\mu$ in the inversion leads to a smooth Moho relief and
-acceptable data misfit.
+Using this value of $\mu$ in the inversion leads to a stable solution
+characterized by a smooth Moho relief with an acceptable data misfit.
 
 The source code profiling results presented in Table~\ref{profiling}
 confirm the efficiency of the proposed method.
@@ -1366,16 +1389,16 @@ multiplications together account for a mere 0.067\% of the total computation
 time required for a single inversion.
 The majority of the computation time (99.824\%) is spent on forward modeling.
 Thus, we are able to retain the high computational efficiency of Bott's method
-while using a classic Tikhonov regularization formulation.
+and use a classic Tikhonov regularization formulation.
 This approach could, in theory, be extended to other types of regularization
-(e.g., Total Variation) and misfit functions (e.g., re-weighted least squares)
+(e.g., total variation) and misfit functions (e.g., re-weighted least squares)
 already available in the literature.
-For example, the Total Variation approach used by \citet{martins2011} could
+For example, the total variation approach used by \citet{martins2011} could
 potentially be implemented in a more straight forward manner than done by
 \citet{santos2015}.
 
 The more complex synthetic data test based on CRUST1.0
-(Fig.~\ref{fig:p3-crust1-results})
+(Fig.~\ref{fig:moho-crust1-results})
 shows that the cross-validation using pointwise Moho depth information
 is able to correctly estimate the density-contrast ($\Delta\rho$) and Normal
 Earth Moho depth ($z_{ref}$).
@@ -1386,42 +1409,37 @@ This phenomenon is particularly strong in the region below the Andes.
 A likely explanation is that the smoothness regularization
 is intrinsically unable to produce sharp variations in Moho depth.
 These effects might be mitigated with the use of sharpness-inducing
-regularization, like Total Variation \citep{martins2011},
+regularization, like
+the weighted smoothness inversion \citep{barbosa1999a},
 Cauchy norm regularization \citep{sacchi1996, pilkington2008},
+entropic regularization \citep{silva2010},
+total variation regularization \citep{martins2011},
 or an adaptive mixed smoothness-sharpness regularization \citep{sun2014}.
 
 We applied the method proposed here to estimate the Moho depth for South
 America.
-Our Moho depth model is in accordance with previous results by
+Our estimated Moho depth model is in accordance with previous results by
 \citet{vandermeijde2013}.
 The model fits well the gravity and seismic data in all oceanic regions, the
 central portion of the Andean foreland, Patagonia, and coastal and central
 parts of Brazil.
 However, the model is unable to fit the gravity and seismic data in places with
-sharp variations in Moho depth, particularly below the Andes.
-This might indicate the improper use of smoothness regularization, as suggested
-by the CRUST1.0 synthetic data test, or the presence of crustal or mantle
-density anomalies that were unaccounted for during the data corrections.
-In the coastal region of Venezuela, along the central Amazon and Solimões
-basins, and in the Paraná basin, the model is able to fit the gravity data but
-differs significantly from the seismic data.
+sharp variations in Moho depth, particularly below the Andes and in the
+boundaries of the main geotectonic provinces of the South American Plate, like
+the Borborema province, the Parnaiba Basin, and the São Francisco Craton.
+This might indicate that smoothness regularization should not be applied
+indiscriminately to the whole model, as suggested by the CRUST1.0 synthetic
+data test.
+Another reason for the observed misfit might be the presence of crustal or
+mantle density anomalies whose gravitational effects were not removed during
+the data corrections.
+In the Guyana Basin on the coastal region of Venezuela, along the central
+Amazonas and Solimões Basins, and in the Paraná Basin, our Moho depth model is
+able to fit the gravity data but differs significantly from the seismic data.
 \citet{mariani2013} and \citet{nunn1988} explain these discrepancies in the
-Paraná and Amazon basins, respectively, as high density rocks in the lower
+Paraná and Amazonas Basins, respectively, as high density rocks in the lower
 crust.
 In general, differences between a gravity and a seismically derived Moho model
 may indicate the presence of crustal or mantle density anomalies that were
 unaccounted for in the data processing.
 Such locations warrant further detailed investigation.
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Acknowledgments}
-
-We are indebted to the developers and maintainers of the open-source
-software without which this work would not have been possible.
-L. Uieda was supported by a scholarship from
-Coordenação de Aperfeiçoamento de Pessoal de Nível Superior
-(CAPES).
-V.C.F. Barbosa was supported by a fellowship from
-Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq).
