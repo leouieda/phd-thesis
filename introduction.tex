@@ -25,7 +25,7 @@ variation in the Arctic \citep{chen2011} and Antarctic regions
 \citep{mikhailov2014}, and groundwater monitoring \citep{humphrey2016}.
 
 Deriving geophysical Earth models from observed gravity data is an ill-posed
-inverse problem.
+inverse problem \citep{backus1967, backus1968}.
 Designing a method for solving these inverse problems presents many challenges.
 The first challenge is to establish a functional mapping between the model
 parameters and the data.
@@ -35,32 +35,33 @@ The second challenge is to choose and implement an optimization algorithm to
 estimate the model parameters that best fit the observed data.
 There are several well established optimization methods to choose from the
 literature, for example, gradient-descent methods like the Gauss-Newton method
-and Steepest Descent or stochastic  methods like the Genetic Algorithm.
+and Steepest Descent or stochastic  methods like the Genetic Algorithm
+\citep[e.g., ][]{menke1984, kelley1987, aster2012}.
 Finally, there is the challenge of stabilizing the ill-posed inverse problem,
-usually through regularization.
+usually through Tikhonov regularization \citep{tikhonov1977}.
 Different regularizing functions favor different model attributes, such as
-smoothness or compactness.
+smoothness or compactness \citep[e.g., ][]{silva2001b}.
 Choosing an appropriate regularizing function is an indirect way to include
 prior geological or geophysical information in the inverse problem.
 
 When developing a new inversion methodology, one must implement in a software
-application all three components of an inversion method (the forward problem,
-optimization, and regularization).
-Fortunately, these components can usually be uncoupled.
+application three modules: the forward problem, an optimization algorithm, and
+a regularizing function.
+Fortunately, these modules can usually be uncoupled.
 For example, the implementation of the forward problem does not depend on the
-choice of optimization method or regularization.
-Likewise, the software implementation of optimization requires only a knowledge
-of a function to optimize (and possibly its derivatives), no matter what is the
-forward problem or regularizing function.
+choice of optimization method or regularizing function.
+Likewise, the software implementation of an optimization algorithm requires
+only a knowledge of a function to be optimized (and possibly its derivatives),
+no matter what is the forward problem or regularizing function.
 Furthermore, changing the regularizing function used, in principle, does not
 require changes to the implementations of the forward problem and the
 optimization method.
 Thus, the ideal software design is to have independent and reusable routines
 for forward modeling, optimization, and regularization.
-These three components can be combined in different ways to produce
+These three modules can be combined in different ways to produce
 new inversion software.
 
-Here, we develop two software projects and apply their reusable components to
+Here, we develop two software projects and apply their reusable modules to
 develop a 3D gravity inversion method in spherical coordinates.
 Chapter~\ref{chap:tesseroids} describes the open-source software
 \textit{Tesseroids}.
