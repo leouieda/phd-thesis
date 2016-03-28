@@ -1,9 +1,25 @@
 \chapter{Modeling the Earth with Fatiando a Terra}
 \label{chap:fatiando}
 
+
 This chapter was published in the Proceedings of the 12th Python in Science
-Conference (Scipy 2013).
-\url{http://conference.scipy.org/proceedings/scipy2013/uieda.html}
+Conference in 2013
+(\url{http://conference.scipy.org/proceedings/scipy2013/uieda.html}).
+It describes the open-source software library Fatiando a Terra and the state of
+the project at the time of the conference.
+Fatiando a Terra was developed by me as part of my PhD thesis work.
+The library has grown since 2013 and now contains more features than described
+here.
+For example, the algorithm for gravitational forward modeling with tesseroids
+presented in Chapter~\ref{chap:tesseroids} is also implemented in Fatiando a
+Terra.
+Furthermore, the gravity inversion method presented in Chapter~\ref{chap:moho}
+is implemented using functions and classes from Fatiando a Terra and will be
+included in a future release of the library.
+The official website (\url{http://www.fatiando.org}) contains more up-to-date
+information about the project.
+
+
 
 \section{Abstract}
 
@@ -14,13 +30,13 @@ usually involves copy and pasting of code, which leads to errors and poor code
 reuse. Fatiando a Terra is a Python library that aims to automate common tasks
 and unify the modeling pipeline inside of the Python language. This allows
 users to replace the traditional shell scripting with more versatile and
-powerful Python scripting. The library can also be used as an API for
-developing stand-alone programs.  Algorithms implemented in Fatiando a Terra
-can be combined to build upon existing functionality. This flexibility
-facilitates prototyping of new algorithms and quickly building interactive
-teaching exercises. In the future, we plan to continuously implement sample
-problems to help teach geophysics as well as classic and state-of-the-art
-algorithms.
+powerful Python scripting. The library can also be used as an API (Application
+Programming Interface) for developing stand-alone programs.  Algorithms
+implemented in Fatiando a Terra can be combined to build upon existing
+functionality. This flexibility facilitates prototyping of new algorithms and
+quickly building interactive teaching exercises. In the future, we plan to
+continuously implement sample problems to help teach geophysics as well as
+classic and state-of-the-art algorithms.
 
 
 
@@ -73,8 +89,11 @@ reused to create new modeling algorithms.  Fatiando a Terra also automates
 common tasks such as griding, map plotting with Matplotlib \citep[][
 \url{http://matplotlib.org}]{hunter2007}, and 3D plotting with Mayavi \citep[][
 \url{http://code.enthought.com/projects/mayavi}]{ramachandran2011}.  Version
-0.1 of Fatiando a Terra is focused on gravity and magnetic methods because this
-is the main focus of the developers.  However, simple ``toy'' problems for
+0.1\footnote{
+    This was the current version in 2013 when this chapter was published in the
+    conference proceedings. As of April 2016, the latest version is 0.3.}
+of Fatiando a Terra is focused on gravity and magnetic methods because this is
+the main focus of the developers.  However, simple ``toy'' problems for
 seismology and geothermics are available and can be useful for teaching
 geophysics.
 
@@ -713,7 +732,9 @@ are no rays.
 
 The Fatiando a Terra package provides an API to develop modeling
 algorithms for a variety of geophysical methods. The current version
-(0.1) has a few state-of-the-art gravity and magnetic modeling and
+(0.1)\footnote{
+    As of April 2016, the latest version is 0.3.}
+has a few state-of-the-art gravity and magnetic modeling and
 inversion algorithms. There are also toy problems in gravity, seismics
 and seismology that are useful for teaching basic concepts of
 geophysics, modeling, and inverse problems.
