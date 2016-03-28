@@ -2,46 +2,48 @@
 
 Apresentamos avanços metodológicos na área de modelagem direta e inversão
 regional de dados de gravimetria por satélite.
-Com esse fim, desenvolvemos dois projetos computacionais de código livre.
+Com esse fim, desenvolvemos dois projetos \DIFdelbegin \DIFdel{de software }\DIFdelend \DIFaddbegin \DIFadd{computacionais }\DIFaddend de código livre.
 O primeiro é um conjunto de programas de linha de comando feitos na linguagem C
 chamado \textit{Tesseroids}.
 Os programas calculam o potencial, aceleração e tensor gradiente gravitacional
 de um prisma esférico, ou tesseroide.
 \textit{Tesseroids} implementa e aprimora um algoritmo de discretização
 adaptativa para automaticamente garantir a acurácia das computações.
-Os resultados com testes numéricos mostram que, para obter o mesmo nível de
+\DIFdelbegin \DIFdel{Nossos }\DIFdelend \DIFaddbegin \DIFadd{Os }\DIFaddend resultados com testes numéricos mostram que, para obter o mesmo nível de
 acurácia, a aceleração gravitacional demanda uma discretização mais fina que o
 potencial.
 Por sua vez, o tensor gradiente gravitacional demanda discretização mais fina
 ainda que a aceleração.
-O segundo projeto computacional é o \textit{Fatiando a Terra}, uma biblioteca
+O segundo \DIFdelbegin \DIFdel{software }\DIFdelend \DIFaddbegin \DIFadd{projeto computacional }\DIFaddend é o \textit{Fatiando a Terra}, uma biblioteca
 feita na linguagem Python para inversão, modelagem direta, processamento e
 visualização de dados.
 A biblioteca permite que o usuário combine as ferramentas de modelagem direta e
-de inversão para implementar novos métodos de inversão.
+\DIFaddbegin \DIFadd{de }\DIFaddend inversão para implementar novos métodos de inversão.
 As ferramentas de modelagem direta incluem uma implementação do algoritmo
 utilizado no programa \textit{Tesseroids}.
-Combinamos os recursos de inversão e modelagem direta com tesseroides do
+\DIFdelbegin \DIFdel{Nós combinamos }\DIFdelend \DIFaddbegin \DIFadd{Combinamos }\DIFaddend os recursos de inversão e modelagem direta com tesseroides do
 \textit{Fatiando a Terra} para desenvolver um método rápido para a inversão
 não-linear de dados de gravidade.
 O método estima a profundidade da interface crosta-manto (a Moho) baseado em
 dados de gravidade utilizando uma aproximação esférica da Terra.
-Adaptamos o método de Bott, que é computacionalmente eficiente, para
+\DIFdelbegin \DIFdel{Nós adaptamos }\DIFdelend \DIFaddbegin \DIFadd{Adaptamos }\DIFaddend o método de Bott, que é computacionalmente eficiente, para
 incluir regularização de suavidade  e utilizar tesseroides ao invés de prismas
 retangulares retos.
 A inversão é controlada por três hiper-parâmetros: o parâmetro de
-regularização, o contraste de densidade entre a Terra real e o modelo de
-referência (a Terra Normal) e a profundidade da Moho da Terra Normal.
-Aplicamos dois tipos de validação cruzada para estimar esses parâmetros de
+regularização, o contraste de densidade \DIFdelbegin \DIFdel{na Moho }\DIFdelend \DIFaddbegin \DIFadd{entre a Terra real e o modelo de
+referência (a Terra Normal) }\DIFaddend e a profundidade da Moho \DIFdelbegin \DIFdel{de
+referência.
+Nós aplicamos }\DIFdelend \DIFaddbegin \DIFadd{da Terra Normal.
+Aplicamos }\DIFaddend dois tipos de validação cruzada para estimar esses parâmetros de
 maneira automática.
 Testes com dados sintéticos confirmam a capacidade do método proposto de
 estimar os três hiper-parâmetros e o relevo suave da Moho.
-Finalmente, aplicamos o método de inversão desenvolvido para gerar um modelo de
+\DIFdelbegin \DIFdel{Por fim, nós aplicamos nosso }\DIFdelend \DIFaddbegin \DIFadd{Finalmente, aplicamos o }\DIFaddend método de inversão \DIFaddbegin \DIFadd{desenvolvido }\DIFaddend para gerar um modelo de
 profundidade da Moho para a América do Sul.
-O modelo de profundidade da Moho estimado ajusta os dados de gravidade
-observados e as estimativas da profundidade da Moho provenientes da sismologia nas
-regiões oceânicas e nas partes central e leste do continente.
-Observamos desajustes aos dados na região dos Andes, onde a profundidade da
+\DIFdelbegin \DIFdel{Nosso modelo }\DIFdelend \DIFaddbegin \DIFadd{O modelo de profundidade da Moho estimado }\DIFaddend ajusta os dados de gravidade
+observados e \DIFaddbegin \DIFadd{as }\DIFaddend estimativas da profundidade da Moho provenientes da sismologia nas
+regiões oceânicas e nas partes central e \DIFdelbegin \DIFdel{Leste }\DIFdelend \DIFaddbegin \DIFadd{leste }\DIFaddend do continente.
+\DIFdelbegin \DIFdel{Nós observamos }\DIFdelend \DIFaddbegin \DIFadd{Observamos }\DIFaddend desajustes aos dados na região dos Andes, onde a profundidade da
 Moho é a maior do continente.
 Nas bacias do Amazonas, Solimões e Paraná, o modelo ajusta os dados de
 gravidade mas não as estimativas da sismologia.
@@ -79,15 +81,15 @@ on observed gravity data using a spherical Earth approximation.
 We extended the computationally efficient Bott's method to include smoothness
 regularization and use tesseroids instead right rectangular prisms.
 The inversion is controlled by three hyper-parameters: the regularization
-parameter, the density-contrast between the real Earth and the reference model
-(the Normal Earth), and the depth of the Moho of the Normal Earth.
+parameter, the \DIFdelbegin \DIFdel{Moho }\DIFdelend density-contrast \DIFaddbegin \DIFadd{between the real Earth and the reference model
+(the Normal Earth)}\DIFaddend , and the depth of the \DIFdelbegin \DIFdel{reference Moho }\DIFdelend \DIFaddbegin \DIFadd{Moho of the Normal Earth}\DIFaddend .
 We employ two cross-validation procedures to automatically estimate these
 parameters.
 Tests on synthetic data confirm the capability of the proposed method to
 estimate smoothly varying Moho depths and the three hyper-parameters.
-Finally, we applied the inversion method developed to produce a Moho depth
+Finally, we applied \DIFdelbegin \DIFdel{our inversion method }\DIFdelend \DIFaddbegin \DIFadd{the inversion method developed }\DIFaddend to produce a Moho depth
 model for South America.
-The estimated Moho depth model fits the gravity data and seismological Moho
+\DIFdelbegin \DIFdel{Our }\DIFdelend \DIFaddbegin \DIFadd{The estimated Moho depth }\DIFaddend model fits the gravity data and seismological Moho
 depth estimates in the oceanic areas and the central and eastern portions of
 the continent.
 We observe large misfits in the Andes region, where Moho depth is largest.

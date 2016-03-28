@@ -2,8 +2,9 @@
 \label{chap:tesseroids}
 
 
-This chapter has been submitted for publication in the ``Geophysical Software
-and Algorithms'' section of the journal GEOPHYSICS.
+This chapter has been submitted for publication in the \DIFdelbegin \DIFdel{journal Geophysics in
+collaboration with Dr. Carla Braitenberg of the University of Trieste, Italy}\DIFdelend \DIFaddbegin \DIFadd{``Geophysical Software
+and Algorithms'' section of the journal GEOPHYSICS}\DIFaddend .
 
 \section{Abstract}
 
@@ -418,9 +419,16 @@ the tesseroid gravitational fields
 with adaptive discretization
 in version 1.2 of the open-source package \emph{Tesseroids}.
 It is freely available online
-(\url{http://tesseroids.leouieda.com} or
-\url{http://dx.doi.org/10.5281/zenodo.16033})
-under the BSD 3-clause open-source license.
+\DIFdelbegin \footnote{\DIFdel{
+http://tesseroids.leouieda.com}}%DIFAUXCMD
+\addtocounter{footnote}{-1}%DIFAUXCMD
+\footnote{\DIFdel{
+http://dx.doi.org/10.5281/zenodo.16033}}
+%DIFAUXCMD
+\addtocounter{footnote}{-1}%DIFAUXCMD
+\DIFdelend \DIFaddbegin \DIFadd{(}\url{http://tesseroids.leouieda.com} \DIFadd{or
+}\url{http://dx.doi.org/10.5281/zenodo.16033}\DIFadd{)
+}\DIFaddend under the BSD 3-clause open-source license.
 An archived version of the source code
 is also available as part of this article.
 
@@ -770,8 +778,12 @@ are also included in
 the source code archive that accompanies this article.
 Alternatively,
 all accompanying material is available
-in the online repository
-\url{https://github.com/pinga-lab/paper-tesseroids}.
+in \DIFdelbegin \DIFdel{an online repository
+}\footnote{\DIFdel{
+https://github.com/pinga-lab/paper-tesseroids}}%DIFAUXCMD
+\addtocounter{footnote}{-1}%DIFAUXCMD
+\DIFdelend \DIFaddbegin \DIFadd{the online repository
+}\url{https://github.com/pinga-lab/paper-tesseroids}\DIFaddend .
 
 
 
@@ -1032,18 +1044,19 @@ This effect can be prohibitive for computing the gravity gradients at
 relatively low heights (e.g., for terrain corrections of
 ground or airborne surveys).
 Further investigation of different criteria for dividing the tesseroids could
-yield better performance through a reduced number of divisions.
+yield better performance through a reduced number of divisions\DIFaddbegin \DIFadd{.
+}
 
 
 
 
 \section{Online repository}
 
-The source code, compiled binary files, and user documentation for
-\textit{Tesseroids} can be found at the project website
-\url{http://tesseroids.leouieda.com}.
-The source code for version 1.2 of \textit{Tesseroids} is permanently archived
-at \url{http://dx.doi.org/10.5281/zenodo.16033}.
+\DIFadd{The source code, compiled binary files, and user documentation for
+}\textit{\DIFadd{Tesseroids}} \DIFadd{can be found at the project website
+}\url{http://tesseroids.leouieda.com}\DIFadd{.
+The source code for version 1.2 of }\textit{\DIFadd{Tesseroids}} \DIFadd{is permanently archived
+at }\url{http://dx.doi.org/10.5281/zenodo.16033}\DIFadd{.
 The data and source code that produced the results and figures presented here
 can be downloaded from
-\url{https://github.com/pinga-lab/paper-tesseroids}.
+}\url{https://github.com/pinga-lab/paper-tesseroids}\DIFaddend .

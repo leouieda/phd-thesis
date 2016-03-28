@@ -1,14 +1,17 @@
 \chapter{Conclusions}
 
 
-We have developed two open-source software projects that implement the
-modules required for building an inversion method: forward modeling,
+We have developed two open-source software \DIFdelbegin \DIFdel{packages }\DIFdelend \DIFaddbegin \DIFadd{projects }\DIFaddend that implement the
+\DIFdelbegin \DIFdel{components }\DIFdelend \DIFaddbegin \DIFadd{modules }\DIFaddend required for building an inversion method: forward modeling,
 optimization, and regularization.
-We used these modules to develop a fast gravity inversion method to estimate
+We used these \DIFdelbegin \DIFdel{components }\DIFdelend \DIFaddbegin \DIFadd{modules }\DIFaddend to develop a fast gravity inversion method to estimate
 the depth of the crust-mantle interface (the Moho) in a spherical
 approximation.
 We then applied the proposed method to estimate the Moho depth for South
 America.
+\DIFdelbegin \DIFdel{Both software packages, the source code for the gravity inversion, and all
+associated data are freely available on the Internet through various websites.
+}\DIFdelend 
 
 The \textit{Tesseroids} software is a collection of command-line
 programs developed in the C programming language.
@@ -27,8 +30,8 @@ achieve the same accuracy level.
 The values of the distance-size ratio that yield a maximum error of 0.1\%
 are $D = 1$ for the gravitational potential, $D = 1.5$ for the first
 derivatives, and $D = 8$ for the second derivatives.
-These values are included as defaults starting in version 1.2 of the software.
-Previous versions of \textit{Tesseroids} have been used in published research
+These values are included as defaults \DIFaddbegin \DIFadd{starting }\DIFaddend in version 1.2 of the software.
+\DIFaddbegin \DIFadd{Previous versions of }\DIFaddend \textit{Tesseroids} \DIFdelbegin \DIFdel{has }\DIFdelend \DIFaddbegin \DIFadd{have }\DIFaddend been used in published research
 by, for example,
 \citet{braitenberg2011}, \citet{alvarez2012}, \citet{bouman2013},
 \citet{bouman2013a}, \citet{mariani2013}, \citet{braitenberg2015}, and
