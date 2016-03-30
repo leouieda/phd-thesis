@@ -4,20 +4,18 @@
 
 This chapter was published in the Proceedings of the 12th Python in Science
 Conference in 2013
-(\url{http://conference.scipy.org/proceedings/scipy2013/uieda.html}).
-It describes the open-source software library Fatiando a Terra and the state of
-the project at the time of the conference.
-Fatiando a Terra was developed by me as part of my PhD thesis work.
-The library has grown since 2013 and now contains more features than described
-here.
-For example, the algorithm for gravitational forward modeling with tesseroids
-presented in Chapter~\ref{chap:tesseroids} is also implemented in Fatiando a
-Terra.
+(\url{http://conference.scipy.org/proceedings/scipy2013/uieda.html}).  It
+describes the open-source software library \textit{Fatiando a Terra} and the
+state of the project at the time of the conference.  \textit{Fatiando a Terra}
+was developed by me as part of my PhD thesis work.  The library has grown since
+2013 and now contains more features than described here.  For example, the
+algorithm for gravitational forward modeling with tesseroids presented in
+Chapter~\ref{chap:tesseroids} is also implemented in \textit{Fatiando a Terra}.
 Furthermore, the gravity inversion method presented in Chapter~\ref{chap:moho}
-is implemented using functions and classes from Fatiando a Terra and will be
-included in a future release of the library.
-The official website (\url{http://www.fatiando.org}) contains more up-to-date
-information about the project.
+is implemented using functions and classes from \textit{Fatiando a Terra} and
+will be included in a future release of the library.  The official website
+(\url{http://www.fatiando.org}) contains more up-to-date information about the
+project.
 
 
 
@@ -27,12 +25,12 @@ Geophysics is the science of using physical observations of the Earth to infer
 its inner structure. Generally, this is done with a variety of numerical
 modeling techniques and inverse problems. The development of new algorithms
 usually involves copy and pasting of code, which leads to errors and poor code
-reuse. Fatiando a Terra is a Python library that aims to automate common tasks
+reuse. \textit{Fatiando a Terra} is a Python library that aims to automate common tasks
 and unify the modeling pipeline inside of the Python language. This allows
 users to replace the traditional shell scripting with more versatile and
 powerful Python scripting. The library can also be used as an API (Application
 Programming Interface) for developing stand-alone programs.  Algorithms
-implemented in Fatiando a Terra can be combined to build upon existing
+implemented in \textit{Fatiando a Terra} can be combined to build upon existing
 functionality. This flexibility facilitates prototyping of new algorithms and
 quickly building interactive teaching exercises. In the future, we plan to
 continuously implement sample problems to help teach geophysics as well as
@@ -81,19 +79,19 @@ students. However, the lack of a common Application Programming Interface (API)
 means that the code for these programs cannot be easily combined to create new
 modeling tools.
 
-Fatiando a Terra (\url{http://www.fatiando.org}, see
+\textit{Fatiando a Terra} (\url{http://www.fatiando.org}, see
 Figure~\ref{fig:p1-fatiando-site}) aims at providing such an API
 for geophysical modeling. Functions in the \texttt{fatiando} package use
 compatible data and mesh formats so that the output of one modeling function
 can be used as input for another. Furthermore, routines can be combined and
-reused to create new modeling algorithms.  Fatiando a Terra also automates
+reused to create new modeling algorithms.  \textit{Fatiando a Terra} also automates
 common tasks such as griding, map plotting with Matplotlib \citep[][
 \url{http://matplotlib.org}]{hunter2007}, and 3D plotting with Mayavi \citep[][
 \url{http://code.enthought.com/projects/mayavi}]{ramachandran2011}.  Version
 0.1\footnote{
     This was the current version in 2013 when this chapter was published in the
     conference proceedings. As of April 2016, the latest version is 0.3.}
-of Fatiando a Terra is focused on gravity and magnetic methods because this is
+of \textit{Fatiando a Terra} is focused on gravity and magnetic methods because this is
 the main focus of the developers.  However, simple ``toy'' problems for
 seismology and geothermics are available and can be useful for teaching
 geophysics.
@@ -118,7 +116,7 @@ provided by \citet{uieda2013} at
 
 \section{Package structure}
 
-The modules and packages of Fatiando a Terra are bundled into the
+The modules and packages of \textit{Fatiando a Terra} are bundled into the
 \texttt{fatiando} package. Each type of geophysical method has its own
 package. As of version 0.1, the available modules and packages are:
 
@@ -152,7 +150,7 @@ package. As of version 0.1, the available modules and packages are:
 
 \section{Griding and map plotting}
 
-Fatiando a Terra handles map data as 1D Numpy arrays, typically x-, y-,
+\textit{Fatiando a Terra} handles map data as 1D Numpy arrays, typically x-, y-,
 z-coordinates and an extra array with the corresponding data. However,
 Matplotlib functions, like \texttt{contourf} and \texttt{pcolor},
 require data to be passed as 2D arrays. Moreover, geophysical data sets
@@ -194,7 +192,7 @@ mpl.show()
     Example of 1) generating a random scatter of points (black dots),
     2) using that to make synthetic data, and
     3) automatically gridding and plotting the data using a
-    Fatiando a Terra wrapper for the Matplotlib ``contourf``
+    \textit{Fatiando a Terra} wrapper for the Matplotlib ``contourf``
     function.
     }
     \label{fig:p1-contourf}
@@ -242,7 +240,7 @@ mpl.show()
 
 The representation of 2D and 3D geometric elements is handled by the
 classes in the \texttt{fatiando.mesher} module. Geometric elements in
-Fatiando a Terra can be assigned physical property values, like density,
+\textit{Fatiando a Terra} can be assigned physical property values, like density,
 magnetization, seismic wave velocity, impedance, etc. This is done
 through a \texttt{props} dictionary whose keys are the name of the
 physical property and values are the corresponding values in SI units:
@@ -403,7 +401,7 @@ process of generating synthetic data from a given Earth model.
 Conversely, geophysical inversion is the process of estimating Earth
 model parameters from observed data.
 
-The Fatiando a Terra packages have separate modules for forward modeling
+The \textit{Fatiando a Terra} packages have separate modules for forward modeling
 and inversion algorithms. The forward modeling functions usually take as
 arguments geometric elements from \texttt{fatiando.mesher} with assigned
 physical properties and return the synthetic data. For example, the
@@ -510,7 +508,7 @@ myv.show()
 
 Geophysics uses anomalies in the gravitational and magnetic fields
 generated by density and magnetization contrasts within the Earth to
-investigate the inner Earth structure. The Fatiando a Terra 0.1 release
+investigate the inner Earth structure. The \textit{Fatiando a Terra} 0.1 release
 has been focused on gravity and magnetic methods. Therefore, the
 \texttt{fatiando.gravmag} package contains more advanced and
 state-of-the-art algorithms than the other packages.
@@ -552,7 +550,7 @@ myv.show()
     \label{fig:p1-imaging}
 \end{figure}
 
-Also implemented in Fatiando a Terra are some recent developments in
+Also implemented in \textit{Fatiando a Terra} are some recent developments in
 gravity and magnetic inversion methods. The method of ``planting
 anomalous densities'' by \citet{uieda2012} is implemented in the
 \texttt{fatiando.gravmag.harvester} module. In contrast to imaging
@@ -741,7 +739,7 @@ are no rays.
 
 \section{Conclusion}
 
-The Fatiando a Terra package provides an API to develop modeling
+The \textit{Fatiando a Terra} package provides an API to develop modeling
 algorithms for a variety of geophysical methods. The current version
 (0.1)\footnote{
     As of April 2016, the latest version is 0.3.}
@@ -750,7 +748,7 @@ inversion algorithms. There are also toy problems in gravity, seismics
 and seismology that are useful for teaching basic concepts of
 geophysics, modeling, and inverse problems.
 
-Fatiando a Terra enables quick prototyping of new algorithms because of
+\textit{Fatiando a Terra} enables quick prototyping of new algorithms because of
 the collection of fast forward modeling routines and the simple syntax
 and high level of the Python language. After prototyping, the
 performance bottlenecks of these algorithms can be easily diagnosed
@@ -758,6 +756,6 @@ using the advanced profiling tools available in the Python language.
 Optimization of only small components of code can be done without loss
 of flexibility using the Cython language \citep{behnel2011}.
 
-The biggest challenge that Fatiando a Terra faces in the near future is
+The biggest challenge that \textit{Fatiando a Terra} faces in the near future is
 the development of a user and, consequently, a developer community. This
 is a key part for the survival of any open-source project.
