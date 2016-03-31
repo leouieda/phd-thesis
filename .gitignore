@@ -3,3 +3,4 @@
 output/
 *.aux
 *-eps-converted-to.pdf
+presentation/.~lock*
