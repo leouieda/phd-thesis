@@ -1,0 +1,16 @@
+name: phd
+dependencies:
+    - python=2.7
+    - pip
+    - future
+    - numpy
+    - scipy
+    - matplotlib
+    - basemap
+    - pillow
+    - numba
+    - jupyter
+    - mayavi
+    - seaborn
+    - pip:
+        - fatiando==0.4
