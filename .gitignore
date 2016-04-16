@@ -5,3 +5,4 @@ output/
 *-eps-converted-to.pdf
 presentation/.~lock*
 .ipynb_checkpoints
+*.pyc
