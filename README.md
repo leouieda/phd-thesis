@@ -8,6 +8,8 @@ Institution: [Observatório Nacional](http://www.on.br/)
 
 Presented: 29 April 2016
 
+Thesis PDF (in English): soon
+
 Thesis defense slides (in Portuguese): [presentation.pdf](https://github.com/pinga-lab/phd-thesis/raw/master/presentation/presentation.pdf)
 
 ![cover page of slides](https://github.com/pinga-lab/phd-thesis/raw/master/cover.png)
