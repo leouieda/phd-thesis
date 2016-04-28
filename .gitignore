@@ -4,5 +4,6 @@ output/
 *.aux
 *-eps-converted-to.pdf
 presentation/.~lock*
+presentation/*.pdf
 .ipynb_checkpoints
 *.pyc
