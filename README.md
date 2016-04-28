@@ -1,10 +1,14 @@
-# PhD Thesis: Gravity forward modeling and inversion in spherical coordinates
+# PhD Thesis: Forward modeling and inversion of gravitational fields in spherical coordinates
 
 Author: [Leonardo Uieda](http://www.leouieda.com)
 
 Advisor: [Valéria C. F. Barbosa](http://lattes.cnpq.br/0391036221142471)
 
 Institution: [Observatório Nacional](http://www.on.br/)
+
+Presented: 29 April 2016
+
+Thesis defense slides: [presentation.pdf](https://github.com/pinga-lab/phd-thesis/raw/master/presentation/presentation.pdf)
 
 ## Abstract
 
